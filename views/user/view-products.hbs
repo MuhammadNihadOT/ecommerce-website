@@ -1,0 +1,84 @@
+{{!-- <section class="w-100 text-center">
+  <div class="container">
+    <div class="row">
+      {{#each Products}}
+      <div class="col-13 col-sm-6 col-md-3 mt-4 mr-0 mb-4 w-100 text-center">
+        <div class="card text-center w-100" style="width: 13rem; height: 24rem;">
+          <div class="text-center mt-3">
+            <a href="product-details/{{this._id}}">
+              <img class="card-img-top" src="/product-images/{{this._id}}.jpg" alt="Loading..."
+                style="width: 7rem;height: 10rem;">
+            </a>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">{{this.name}}</h5>
+            <p class="card-text">{{this.discription}}</p>
+            <div class="text-center">
+              <button onclick="addToCart('{{this._id}}')" class="btn btn-primary">Add Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</section> --}}
+
+
+<section style="padding-top: 3rem;">
+  <div class="container">
+    <div class="row col-12 text-center">
+      <div class="text-center w-100" style="background-color: #b1473b;">
+        <img class="text-center" src="images/home-furnishing.jpg" alt="">
+      </div>
+    </div>
+    <div class="row">
+      {{#each Products}}
+        <div class="col-4 pt-5">
+        <div style="text-align: end;">
+           <a href="product-details/{{this._id}}">
+              <img class="card-img-top" src="/product-images/{{this._id}}.jpg" alt="Loading..."style="width: 10rem;height: 14rem;">
+            </a>
+        </div>
+      </div>
+      <div class="col-6">
+        <div style="padding-top:5rem">
+          <h4>{{this.name}}</h4>
+          <h5>Rs.<sup>₹</sup><span style="color: red;">{{this.price}}</span></h5>
+          <p>{{this.description}}</p>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</section>
+
+
+{{!-- <script>
+  //$(document).ready
+  $(document).ready( function () {
+    $('#x').DataTable();
+} );
+</script> --}}
+
+
+
+{{!-- <script>
+  function addToCart(prodId) {
+    $.ajax({
+      url: '/add-to-cart/' + prodId,
+      method: 'get',
+      success: (response) => {
+        if (response.status) {
+          let count = $('#cart-count').html()
+          count = parseInt(count) + 1
+          $('#cart-count').html(count)
+        } else {
+          //alert('else')
+          location.href = '/login'
+
+        }
+      }
+    })
+  }
+</script> --}}

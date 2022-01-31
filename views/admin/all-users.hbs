@@ -1,0 +1,32 @@
+<section>
+    <div class="container">
+        <table class="table mt-4">
+  <thead>
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email Address</th>
+      {{!-- <th scope="col"></th>
+      <th scope="col">Amount</th>
+      <th scope="col">Payment</th>
+      <th scope="col">Status</th>
+      <th scope="col">View</th> --}}
+    </tr>
+  </thead>
+  <tbody>
+    {{#each userData}}
+        <tr>
+            <td>{{this.date}}</td>
+            <td>{{this.name}}</td>
+            <td>{{this.emailaddr}}</td>
+            {{!-- <td>{{this.deliveryDetails.pincode}}</td>
+            <td>{{this.totalAmount}}</td>
+            <td>{{this.paymentMethod}}</td>
+            <td>{{this.status}}</td> 
+            <td><a href="/order-products/{{this._id}}" class="btn btn-primary">View Product</a></td>  --}}
+        </tr>
+    {{/each}}
+  </tbody>
+</table>
+    </div>
+</section>

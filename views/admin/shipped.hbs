@@ -1,0 +1,34 @@
+<section>
+    <div class="container">
+        <table class="table mt-4">
+  <thead>
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">Address</th>
+      <th scope="col">Mobile</th>
+      <th scope="col">Pin</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Payment</th>
+      <th scope="col">Status</th>
+      {{!-- <th scope="col">Changing to Shipped</th> --}}
+      {{!-- <th scope="col">View Shipping</th>
+      <th scope="col"><a href="" class="btn btn-info">View Shipping</a></th>  --}}
+    </tr>
+  </thead>
+  <tbody>
+    {{#each shipped}}
+        <tr>
+            <td>{{this.date}}</td>
+            <td>{{this.deliveryDetails.address}}</td>
+            <td>{{this.deliveryDetails.mobile}}</td>
+            <td>{{this.deliveryDetails.pincode}}</td>
+            <td>{{this.totalAmount}}</td>
+            <td>{{this.paymentMethod}}</td>
+            <td><a href="" class="btn btn-success">{{this.status}}</a></td> 
+            {{!-- <td><a href="/admin/change-to-shipping/{{this._id}}" class="btn btn-primary">Shipping</a></td>  --}}
+        </tr>
+    {{/each}}
+  </tbody>
+</table>
+    </div>
+</section>

@@ -1,0 +1,41 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-success">
+    <a class="navbar-brand text-white pl-5" href="/admin/">Admin Panel</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item text-center">
+          <a class="nav-link text-white" href="/admin/">All Products
+            <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item text-center">
+          <a class="nav-link text-white" href="/admin/all-orders">All Orders </a>
+        </li>
+        <li class="nav-item text-center">
+          <a class="nav-link text-white" href="/admin/all-users">All Users</a>
+        </li>
+        <li class="nav-item text-center">
+          <a class="nav-link text-white" href="/login">User Login</a>
+        </li>
+        {{!-- <li class="nav-item text-center">
+            <a class="dropdown-item" style="color: white;" ></a>
+        </li> --}}
+        {{#if Admin}}
+          <li class="nav-item text-center">
+            <a class="nav-link text-white" href="/admin/logout">Log Out</a>
+            
+          </li>
+          
+          {{else}}
+          <li class="nav-item text-center">
+            <a class="nav-link text-white" href="/admin/login">Log In</a>
+            {{!-- <a class="dropdown-item" href="/login">User Login</a> --}}
+          </li>
+        {{/if}}
+       
+      </ul>
+    </div>
+  </nav>
+</header>
