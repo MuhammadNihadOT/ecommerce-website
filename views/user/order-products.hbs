@@ -1,23 +1,20 @@
 <section class="w-100 text-center">
-<div class="container">
-  <div class="row">
-    {{#each products}}
-        <div class="col-13 col-sm-6 col-md-3 mt-4 mr-0 mb-4 w-100 text-center">
-          <div class="card text-center w-100" style="width: 13rem; height: 24rem;">
-            <div class="text-center mt-3">
-                    <img class="card-img-top" src="/product-images/{{this.product._id}}.jpg" alt="Loading..." style="width: 7rem;height: 12rem;">
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">{{this.product.name}}</h5>
-              <p class="card-text">{{this.product.price}}</p>
-              <p class="card-text">Quantity:{{this.quantity}}</p>
-              <div class="text-center">
-               
-              </div>
-            </div>
+  <div class="container">
+    <div class="row">
+      {{#each products}}
+      <div class="col-13 col-sm-6 col-md-3 mt-4 mr-0 mb-4 w-100 text-center">
+        <div class="card text-center w-100" style="width: 13rem; height: 24rem;">
+          <div class="text-center mt-3">
+            <img class="card-img-top" src="/product-images/{{this.product._id}}.jpg" alt="Loading..." style="width: 7rem;height: 12rem;">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">{{this.product.name}}</h5>
+            <p class="card-text">{{this.product.price}}</p>
+            <p class="card-text">Quantity:{{this.quantity}}</p>
           </div>
         </div>
+      </div>
       {{/each}}
+    </div>
   </div>
-</div>
 </section>

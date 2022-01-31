@@ -1,44 +1,36 @@
 <section>
-    <div class="container">
-        <table class="table mt-4">
-      {{#if orders}}    
-  <thead>
-    
-    <tr>
-      <th scope="col">Date</th>
-      <th scope="col">Address</th>
-      <th scope="col">Mobile</th>
-      <th scope="col">Pin</th>
-      <th scope="col">Bill Amount</th>
-      <th scope="col">Payment</th>
-      <th scope="col">Status</th>
-      <th scope="col">View</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each orders}}
+  <div class="container">
+    <table class="table mt-4">
+      {{#if orders}}
+      <thead>
         <tr>
-            <td>{{this.date}}</td>
-            <td>{{this.deliveryDetails.address}}</td>
-            <td>{{this.deliveryDetails.mobile}}</td>
-            <td>{{this.deliveryDetails.pincode}}</td>
-            <td>{{this.totalAmount}}</td>
-            <td>{{this.paymentMethod}}</td>
-            {{!-- {{#if orders.status=="shipped"}}
-                
-              {{else}} --}}
-              {{!-- <a href="" class="btn btn-success"><td></td> </a> --}}
-              <td>{{this.status}}</td>
-                <td><a href="/order-products/{{this._id}}" class="btn btn-primary">View Product</a></td> 
-                {{!-- <td>halo</td> --}}
-            {{!-- {{/if}} --}}
-            
+          <th scope="col">Date</th>
+          <th scope="col">Address</th>
+          <th scope="col">Mobile</th>
+          <th scope="col">Pin</th>
+          <th scope="col">Bill Amount</th>
+          <th scope="col">Payment</th>
+          <th scope="col">Status</th>
+          <th scope="col">View</th>
         </tr>
-    {{/each}}
-  </tbody>
-  {{else}}
-  <h2 class="mt-5">No Orders </h2>
-  {{/if}}
-</table>
-    </div>
+      </thead>
+      <tbody>
+        {{#each orders}}
+        <tr>
+          <td>{{this.date}}</td>
+          <td>{{this.deliveryDetails.address}}</td>
+          <td>{{this.deliveryDetails.mobile}}</td>
+          <td>{{this.deliveryDetails.pincode}}</td>
+          <td>{{this.totalAmount}}</td>
+          <td>{{this.paymentMethod}}</td>
+          <td>{{this.status}}</td>
+          <td><a href="/order-products/{{this._id}}" class="btn btn-primary">View Product</a></td>
+        </tr>
+        {{/each}}
+      </tbody>
+      {{else}}
+      <h2 class="mt-5">No Orders </h2>
+      {{/if}}
+    </table>
+  </div>
 </section>

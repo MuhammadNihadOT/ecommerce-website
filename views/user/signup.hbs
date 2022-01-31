@@ -1,98 +1,43 @@
-{{!-- <section class="" style="display: flex;justify-content: center;align-items: center;">
-    <div class="container">
-        <div>
-            <form action="/signup" method="post">
-                <div class="row w-50 mt-4">
-                    <div class="text-center w-100">
-                        <h3 class="font-weight-bold">Create New Account</h3>
-                    </div>
-                    <div class="col-12">
-                        <label>Name</label>
-                        <input type="text" class="form-control" name="name" />
-                    </div>
-                    <div class="col-12">
-                        <label>Email address</label>
-                        <input type="email" class="form-control" name="emailaddr" />
-                    </div>
-                    <div class="col-12">
-                        <label>Password</label>
-                        <input type="password" class="form-control" name="password" />
-                    </div>
-                    <div class="col-12 mt-2">
-                        <a class="text-primary" href="/login">Aleady have account ?</a>
-                    </div>
-                    <div class="ml-3">
-                        <button type="submit" class="btn btn-success mt-3">Sign in</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-</section> --}}
-
-
-
 <section class="vh-100">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-12 text-black"
-                    style="display: flex!important; justify-content: center; align-content: center;">
-                    <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5"
-                        style="border: 1px solid #d9d9e1;">
-                        <form action="/signup" method="post" name="formvalidate"  onsubmit="return validate()" style="width: 23rem;">
-                            <div class="pb-5">
-                                <span><i class="fas fa-crow fa-2x me-3 pt-5 mt-xl-4" style="color: #709085;"></i></span>
-                                <span class="h2 fw-bold mb-0"
-                                    style="border-bottom: 3px solid #b3c3ae;padding: 5px;">SIGNUP</span>
-                            </div>
-                            <div class="form-outline mb-4">
-                                <label class="form-label" for="form2Example18">Full Name</label>
-                                <input type="text" id="form2Example18" class="form-control" name="name" />
-                            </div>
-                            <div class="form-outline mb-4">
-                                <label class="form-label" for="form2Example18">Email address</label>
-                                <input type="email" id="form2Example18" class="form-control" name="emailaddr" />
-                            </div>
-                            <div class="form-outline mb-4">
-                                <label class="form-label" for="form2Example28">Password</label>
-                                <input type="password" id="form2Example28" class="form-control" name="password" />
-                            </div>
-                            <div class="form-outline mb-4">
-                                <label class="form-label" for="form2Example28">Confirm Password</label>
-                                <input type="password" id="form2Example28" class="form-control" name="re_password" />
-                                <label id="error_password" style="display: none;" for="">Note match password</label>
-                            </div>
-                            <div class="col-12 mt-1 mb-2">
-                                <a class="text-primary" href="/login">Create new account ?</a>
-                            </div>
-                            <div class="pt-1 mb-4">
-                                <button class="btn btn-info btn-lg btn-block" type="submit">Login</button>
-                            </div>
-                        </form>
-                    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12 text-black"
+                style="display: flex!important; justify-content: center; align-content: center;">
+                <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5"
+                    style="border: 1px solid #d9d9e1;">
+                    <form action="/signup" method="post" name="formvalidate" onsubmit="return validate()"
+                        style="width: 23rem;">
+                        <div class="pb-5">
+                            <span><i class="fas fa-crow fa-2x me-3 pt-5 mt-xl-4" style="color: #709085;"></i></span>
+                            <span class="h2 fw-bold mb-0"
+                                style="border-bottom: 3px solid #b3c3ae;padding: 5px;">SIGNUP</span>
+                        </div>
+                        <div class="form-outline mb-4">
+                            <label class="form-label" for="form2Example18">Full Name</label>
+                            <input type="text" id="form2Example18" class="form-control" name="name" />
+                        </div>
+                        <div class="form-outline mb-4">
+                            <label class="form-label" for="form2Example18">Email address</label>
+                            <input type="email" id="form2Example18" class="form-control" name="emailaddr" />
+                        </div>
+                        <div class="form-outline mb-4">
+                            <label class="form-label" for="form2Example28">Password</label>
+                            <input type="password" id="form2Example28" class="form-control" name="password" />
+                        </div>
+                        <div class="form-outline mb-4">
+                            <label class="form-label" for="form2Example28">Confirm Password</label>
+                            <input type="password" id="form2Example28" class="form-control" name="re_password" />
+                            <label id="error_password" style="display: none;" for="">Note match password</label>
+                        </div>
+                        <div class="col-12 mt-1 mb-2">
+                            <a class="text-primary" href="/login">Create new account ?</a>
+                        </div>
+                        <div class="pt-1 mb-4">
+                            <button class="btn btn-info btn-lg btn-block" type="submit">Login</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-    </section>
-
-   <script>
-       
-function validate(){
-    var password=document.formvalidate.password.value;
-    //console.log(password)
-    var password_error;
-    var password_succesfull;
-    var re_password=document.formvalidate.re_password.value;
-    var error_password;
-    if(password==re_password){
-        password_succesfull=document.getElementById("success_password").style="color:green;display:block";
-        password_succesfull.innerHTML;
-    }else{
-        error_password=document.getElementById("error_password").style="color:red;display:block";
-        error_password.innerHTML;
-        document.formvalidate.re_password.focus();
-    }
-        return false
-
-}
-
-    </script>
+    </div>
+</section>

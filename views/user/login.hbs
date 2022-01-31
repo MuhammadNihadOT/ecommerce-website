@@ -1,81 +1,39 @@
-{{!-- 
-
-<section class="" style="display: flex;justify-content: center;align-items: center;">
-    <div class="container">
-        <div>
-            <form action="/login" method="post" >
-                <div class="row w-50 mt-4">
-                    <div class="text-center w-100">
-                        <h3 class="font-weight-bold">Login</h3>
-                    </div>
-                    {{#if userLogErr}}
-                    <div class="col-12">
-                        <a class="error">{{userLogErr}}</a>
-                    </div>
-                    {{/if}}
-                    <div class="col-12">
-                        <label>Email address</label>
-                        <input type="email" class="form-control" name="emailaddr"/>
-                    </div>
-                    <div class="col-12">
-                        <label>Password</label>
-                        <input type="password" class="form-control" name="password"/>
-                    </div>
-                    <div class="col-12 mt-2">
-                        <a class="text-primary" href="/signup">Create new account ?</a>
-                    </div>
-                    <div class="ml-3">
-                        <button type="submit" class="btn btn-success mt-3">Sign in</button>
-                    </div>
-                </div>
-            </form>
-        
-    </div>
-</section> --}}
-
-
-
-
 <section class="vh-100">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-12 text-black"
-          style="display: flex!important; justify-content: center; align-content: center;">
-          <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5"
-            style="border: 1px solid #d9d9e1;">
-            <form action="/login" method="post" style="width: 23rem;">
-              <div class="pb-5">
-                <span><i class="fas fa-crow fa-2x me-3 pt-5 mt-xl-4" style="color: #709085;"></i></span>
-                <span class="h2 fw-bold mb-0" style="border-bottom: 3px solid #b3c3ae;padding: 5px;">LOGIN</span>
-              </div>
-              {{#if userLogErr}}
-                    <div class="col-12">
-                        <a class="error">{{userLogErr}}</a>
-                </div>
-                {{/if}}
-              <div class="form-outline mb-4">
-                <label class="form-label" for="form2Example18">Email address</label>
-                <input type="email" id="form2Example18" style="font-size: 15px!important;" class="form-control form-control-lg" name="emailaddr" />
-              </div>
-              <div class="form-outline mb-4">
-                <label class="form-label" for="form2Example28">Password</label>
-                <input type="password" id="form2Example28" class="form-control form-control-lg" name="password" />
-              </div>
-              <div class="col-12 mt-1 mb-2">
-                <a class="text-primary" href="/signup">Create new account ?</a>
-              </div>
-              <div class="pt-1 mb-4">
-                <button class="btn btn-info btn-lg btn-block" type="submit">Login</button>
-              </div>
-              <p class="small mb-5 pb-lg-2"><a class="text-muted" href="#!">Forgot password?</a></p>
-            </form>
-          </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12 text-black"
+        style="display: flex!important; justify-content: center; align-content: center;">
+        <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5"
+          style="border: 1px solid #d9d9e1;">
+          <form action="/login" method="post" style="width: 23rem;">
+            <div class="pb-5">
+              <span><i class="fas fa-crow fa-2x me-3 pt-5 mt-xl-4" style="color: #709085;"></i></span>
+              <span class="h2 fw-bold mb-0" style="border-bottom: 3px solid #b3c3ae;padding: 5px;">LOGIN</span>
+            </div>
+            {{#if userLogErr}}
+            <div class="col-12">
+              <a class="error">{{userLogErr}}</a>
+            </div>
+            {{/if}}
+            <div class="form-outline mb-4">
+              <label class="form-label" for="form2Example18">Email address</label>
+              <input type="email" id="form2Example18" style="font-size: 15px!important;"
+                class="form-control form-control-lg" name="emailaddr" />
+            </div>
+            <div class="form-outline mb-4">
+              <label class="form-label" for="form2Example28">Password</label>
+              <input type="password" id="form2Example28" class="form-control form-control-lg" name="password" />
+            </div>
+            <div class="col-12 mt-1 mb-2">
+              <a class="text-primary" href="/signup">Create new account ?</a>
+            </div>
+            <div class="pt-1 mb-4">
+              <button class="btn btn-info btn-lg btn-block" type="submit">Login</button>
+            </div>
+            <p class="small mb-5 pb-lg-2"><a class="text-muted" href="#!">Forgot password?</a></p>
+          </form>
         </div>
       </div>
     </div>
-  </section>
-  {{!-- <style>
-      form2Example28{
-          font-size: 15px !important;
-      }
-  </style> --}}
+  </div>
+</section>

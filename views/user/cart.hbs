@@ -20,15 +20,12 @@
           <td>{{this.product.price}}</td>
           <td>
             <h6></h6>
-            <button class="cart-item-count mr-3" style="color: white; */border: none;color: black;font-size: 21px;"
-              onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',-1)">-</button>
+            <button class="cart-item-count mr-3" style="border: none;color: black;font-size: 21px;" onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',-1)">-</button>
             <span id="{{this.product._id}}">{{this.quantity}}</span>
-            <button class="cart-item-count ml-3" style="border: none;color: black;font-size: 21px;"
-              onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',1)">+</button>
+            <button class="cart-item-count ml-3" style="border: none;color: black;font-size: 21px;" onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',1)">+</button>
           </td>
           <td>
-            <a class="btn bg-danger text-white"
-              onclick="DeleteProductFromCart('{{this._id}}','{{this.product._id}}')">Delete</a>
+            <a class="btn bg-danger text-white" onclick="DeleteProductFromCart('{{this._id}}','{{this.product._id}}')">Delete</a>
           </td>
         </tr>
         {{/each}}
@@ -54,50 +51,3 @@
     {{/if}}
   </div>
 </section>
-
-
-
-<script>
-  function changeQuantity(cartId, proId, userId, count) {
-    let quantity = parseInt(document.getElementById(proId).innerHTML)
-    count = parseInt(count)
-    $.ajax({
-      url: '/change-product-quantity',
-      data:
-      {
-        userId: userId,
-        cartId: cartId,
-        ProductId: proId,
-        count: count,
-        quantity: quantity
-      },
-      method: 'post',
-      success: (response) => {
-        if (response.RemoveProduct) {
-          alert('Product Remove is successfully ')
-          location.reload()
-        } else {
-          document.getElementById(proId).innerHTML = quantity + count
-          document.getElementById('total').innerHTML = response.total
-        }
-      }
-    })
-  }
-  function DeleteProductFromCart(cartId, productId) {
-    $.ajax({
-      url: '/remove-product-from-cart',
-      data:
-      {
-        cartId: cartId,
-        productId: productId,
-      },
-      method: 'post',
-      success: (response) => {
-        if (response.RemoveProduct) {
-          alert('Product Remove is successfully ')
-          location.reload()
-        }
-      }
-    })
-  }
-</script>

@@ -9,13 +9,13 @@ const collections = require("../config/collections");
 
 module.exports = {
   doSignup: (userData) => {
-    
+
     return new Promise(async (resolve, reject) => {
-      let objData ={
-        name:userData.name,
-        emailaddr:userData.emailaddr,
-        date:new Date(),
-        password:userData.password
+      let objData = {
+        name: userData.name,
+        emailaddr: userData.emailaddr,
+        date: new Date(),
+        password: userData.password
       }
       objData.password = await bcrypt.hash(objData.password, 10);
       db.get().collection(collection.USER_COLLECTION).insertOne(objData).then((data) => {
@@ -64,8 +64,8 @@ module.exports = {
             {
               $inc: { 'products.$.quantity': 1 },
             }).then((response) => {
-            resolve();
-          });
+              resolve();
+            });
         } else {
           db.get().collection(collection.CART_COLLECTION).updateOne({ user: objectId(userId) },
             {
@@ -210,8 +210,8 @@ module.exports = {
   },
   placeOrder: (order, products, totalprice, userId) => {
     products = products.products
-    return new Promise(async(resolve, reject) => {
-      let userData =await db.get().collection(collection.USER_COLLECTION).findOne({_id:objectId(userId)})
+    return new Promise(async (resolve, reject) => {
+      let userData = await db.get().collection(collection.USER_COLLECTION).findOne({ _id: objectId(userId) })
       let status = order.payment === 'COD' ? 'placed' : 'pending'
       let orderObj = {
         deliveryDetails: {
@@ -219,8 +219,8 @@ module.exports = {
           address: order.address,
           pincode: order.pincode
         },
-        email:userData.emailaddr,
-        name:userData.name,
+        email: userData.emailaddr,
+        name: userData.name,
         userId: objectId(order.userId),
         paymentMethod: order.payment,
         products: products,
@@ -272,42 +272,33 @@ module.exports = {
       resolve(orders)
     })
   },
-  // edit:(userId,userData)=>{
-  //   return new Promise((resolve,reject)=>{
-  //     db.get().collection(collection.USER_COLLECTION).updateOne({name:'$userData.name',emailaddr:'$userData.emailaddr'}).then((response)=>{
-  //     })
-  //   })
-  // },
-  getUserDetails:(userId)=>{
-    return new Promise((resolve,reject)=>{
-      db.get().collection(collection.USER_COLLECTION).findOne({_id:objectId(userId)}).then((response)=>{
+  getUserDetails: (userId) => {
+    return new Promise((resolve, reject) => {
+      db.get().collection(collection.USER_COLLECTION).findOne({ _id: objectId(userId) }).then((response) => {
         resolve(response)
       })
     })
   },
-  updateProfile:(userId,userData)=>{
-    console.log(userId,userData)
-    return new Promise((resolve,reject)=>{
-        db.get().collection(collection.USER_COLLECTION).updateOne({_id:objectId(userId)},{
-            $set:{
-                name:userData.name,
-                emailaddr:userData.emailaddr,
-                // price:proDetails.price,
-                // category:proDetails.category
-            }
-        }).then((response)=>{
-            resolve(response)
-        })
+  updateProfile: (userId, userData) => {
+    console.log(userId, userData)
+    return new Promise((resolve, reject) => {
+      db.get().collection(collection.USER_COLLECTION).updateOne({ _id: objectId(userId) }, {
+        $set: {
+          name: userData.name,
+          emailaddr: userData.emailaddr,
+        }
+      }).then((response) => {
+        resolve(response)
+      })
     })
-},
-getProduct:(productId)=>{
-  // console.log(productId,'hyyyyyyyyyyyyyyyyyyyyyyyyyyy')
-  return new Promise(async(resolve,reject)=>{
-    await db.get().collection(collection.PRODUCT_COLLECTION).findOne({_id:objectId(productId)}).then((response)=>{
-      resolve(response)
+  },
+  getProduct: (productId) => {
+    return new Promise(async (resolve, reject) => {
+      await db.get().collection(collection.PRODUCT_COLLECTION).findOne({ _id: objectId(productId) }).then((response) => {
+        resolve(response)
+      })
     })
-  })
-},
+  },
 
 }
 

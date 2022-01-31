@@ -1,21 +1,21 @@
 <section>
-    <div class="container">
-        <div class="row mt-4 mb-4">
-            <a href="/admin/add-product" class="btn btn-success ml-auto">Add Product</a>
-        </div>
-        <table class="table mt-4" id="x">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Title</th>
-      <th scope="col">Category</th>
-      <th scope="col">Price</th>
-      <th scope="col">Image</th>
-      <th scope="col">Option</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each Products}}
+  <div class="container">
+    <div class="row mt-4 mb-4">
+      <a href="/admin/add-product" class="btn btn-success ml-auto">Add Product</a>
+    </div>
+    <table class="table mt-4" id="x">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Title</th>
+          <th scope="col">Category</th>
+          <th scope="col">Price</th>
+          <th scope="col">Image</th>
+          <th scope="col">Option</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each Products}}
         <tr>
           <td scope="row">1</td>
           <td>{{this.name}}</td>
@@ -27,20 +27,14 @@
             <a class="btn bg-danger text-white" href="/admin/delete-product/{{this._id}}" onclick="return confirm('Are you want to delete {{this.name}} ')">Delete</a>
           </td>
         </tr>
-    {{/each}}
-  </tbody>
-</table>
-    </div>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
 </section>
-<style>
-  #x_filter{
-    /*background-color: black!important;*/
-  }
-</style>
 
 <script>
-  //$(document).ready
-  $(document).ready( function () {
+  $(document).ready(function () {
     $('#x').DataTable();
-} );
+  });
 </script>

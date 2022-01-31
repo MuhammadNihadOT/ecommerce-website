@@ -1,75 +1,18 @@
-{{!-- <header class="">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/">Shopping Cart</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="/">Products<span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/cart">Cart<span class="badge badge-success"
-              id="cart-count">{{cartCount}}</span></a>
-        </li>
-
-        {{#if user}}
-        <li class="nav-item">
-          <a class="nav-link" href="/orders">Orders</a>
-        </li>
-        {{/if}}
-      </ul>
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          {{#if user}}
-          {{user.name}}
-          {{else}}
-          Account
-          {{/if}}
-
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          {{#if user}}
-          <a class="dropdown-item" href="/logout">LogOut</a>
-          <a class="dropdown-item" href="/edit-profile">Edit</a>
-          {{else}}
-          <a class="dropdown-item" href="/login">Login</a>
-          <a class="dropdown-item" href="/signup">SignUp</a>
-
-          {{/if}}
-
-        </div>
-      </div>
-    </div>
-  </nav>
-</header> --}}
-{{!-- {{#if s}} --}}
 <header style="padding-bottom: 5rem;">
-  <nav class="navbar navbar-expand-md navbar-light"
-    style="position: fixed;width: 100%;z-index: 9;background-color: #0c102e;">
-    <a class="navbar-brand" href="/"><span style="color: #20db63;">Explo</span><span
-        style="color: white;">Kart</span></a>
-    <button class="navbar-toggler" style="background-color: darkgray;" type="button" data-toggle="collapse"
-      data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
-      aria-label="Toggle navigation">
+  <nav class="navbar navbar-expand-md navbar-light" style="position: fixed;width: 100%;z-index: 9;background-color: #0c102e;">
+    <a class="navbar-brand" href="/"><span style="color: #20db63;">Explo</span><span style="color: white;">Kart</span></a>
+    <button class="navbar-toggler" style="background-color: darkgray;" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup"
-      style="justify-content:flex-end;align-content:center;">
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="justify-content:flex-end;align-content:center;">
       <div class="navbar-nav">
         <a class="nav-item nav-link text-center text-white" href="/">Products<span class="sr-only">(current)</span></a>
         {{#if user}}
         <a class="nav-item nav-link text-center text-white" href="/orders">Orders</a>
         {{/if}}
-        <a class="nav-item nav-link text-center text-white" href="/cart"><i class="fas fa-shopping-cart"></i>Cart<span
-            class="badge badge-pill badge-danger ml-1" id="cart-increase-count">{{cartCount}}</span></a>
+        <a class="nav-item nav-link text-center text-white" href="/cart"><i class="fas fa-shopping-cart"></i>Cart<span class="badge badge-pill badge-danger ml-1" id="cart-increase-count">{{cartCount}}</span></a>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-center text-white" href="#" id="navbarDropdown" role="button"
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle text-center text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             {{#if user}}
             {{user.name}}
             {{else}}
@@ -85,15 +28,11 @@
             {{else}}
             <a class="dropdown-item" href="/login">Login</a>
             <a class="dropdown-item" href="/signup">SignUp</a>
-            <a class="dropdown-item" href="admin/">Admin</a>
-
+            <a class="dropdown-item" href="/admin">Admin</a>
             {{/if}}
-            {{!-- <a class="dropdown-item" href="#">Login</a> --}}
-            {{!-- <a class="dropdown-item" href="#">Signup</a> --}}
           </div>
         </li>
       </div>
     </div>
   </nav>
 </header>
-{{!-- {{/if}} --}}

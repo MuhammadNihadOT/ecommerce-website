@@ -1,41 +1,14 @@
-{{!-- <section class="" style="display: flex;justify-content: center;align-items: center;">
-    <div class="container">
-        <div>
-            <form action="/edit-profile" method="post">
-                <div class="row w-50 mt-4">
-                    <div class="text-center w-100">
-                        <h3 class="font-weight-bold">Edit Profile</h3>
-                    </div>
-                    {{#if userData}}
-                    <div class="col-12">
-                        <label>Name</label>
-                        <input type="text" class="form-control" name="name" value="{{userData.name}}" />
-                    </div>
-                    <div class="col-12">
-                        <label>Email address</label>
-                        <input type="email" class="form-control" name="emailaddr" value="{{userData.emailaddr}}" />
-                    </div>
-                    {{/if}}
-                    <div class="ml-3">
-                        <button type="submit" class="btn btn-primary mt-3">Update Profile</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-</section> --}}
-
 <section>
-     <form action="/edit-profile" method="post">
+    <form action="/edit-profile" method="post">
         <div class="" style="width: 100%;display: flex;align-items: center;flex-direction: column;">
             <div style="   margin-top: 5rem;padding: 21px 30px;border: 1px solid #b9b3b3;border-radius: 10px;">
                 <div class="form-group text-center" style="width: 390px;padding-top: 2rem;">
                     <h3 for="exampleInputEmail1">Edit Profile</h3>
                 </div>
-                 {{#if userData}}
+                {{#if userData}}
                 <div class="form-group" style="width: 390px;">
                     <label for="exampleInputEmail1">Name</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" name="name" value="{{userData.name}}" aria-describedby="emailHelp"
-                        placeholder="Enter email">
+                    <input type="text" class="form-control" id="exampleInputEmail1" name="name" value="{{userData.name}}" aria-describedby="emailHelp" placeholder="Enter email">
                 </div>
                 <div class="form-group" style="width: 390px;">
                     <label for="exampleInputPassword1">Email</label>
@@ -47,25 +20,3 @@
         </div>
     </form>
 </section>
-
-{{!-- <script>
-    //const d = new Date();
-    //console.lof(d)
-    $('#edit-profile').submit((e)=>{
-        //var date = new Date();
-        //console.log(date)
-        e.preventDefault()
-        $.ajax({
-            url:'/edit-profile',
-            method:'post',
-            data:$('#edit-profile').serialize(),
-            success:(response)=>{
-               
-                if(response.status){
-                     alert(response)
-                    location.href='/session-set'
-                }
-            }
-        })
-    })
-</script> --}}
