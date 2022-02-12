@@ -17,6 +17,18 @@ module.exports = {
             resolve(products)
         })
     },
+    getAllBanners:()=>{
+        return new Promise(async (resolve, reject) => {
+            let banners = await db.get().collection(collection.BANNER_COLLECTION).find().toArray()
+            // console.log('server',banners.length)
+            // let lengthForBanner = banners.length
+            // let obj ={
+            //     banners:banners,
+            //     lengthForBanner:lengthForBanner
+            // }
+            resolve(banners)
+        })
+    },
     deleteProduct: (prodID) => {
         return new Promise((resolve, reject) => {
             db.get().collection(collection.PRODUCT_COLLECTION).deleteOne({ _id: objectId(prodID) }).then((response) => {
@@ -97,6 +109,11 @@ module.exports = {
         return new Promise(async (resolve, reject) => {
             let orders = await db.get().collection(collection.ORDER_COLLECTION).find({ userId: objectId(userId), status: 'shipped' }).toArray()
             resolve(orders)
+        })
+    },
+    addBanner: (product, callback) => {
+        db.get().collection(collection.BANNER_COLLECTION).insertOne(product).then((data) => {
+            callback(data.insertedId)
         })
     },
 }

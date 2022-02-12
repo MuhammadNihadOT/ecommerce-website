@@ -1,3 +1,137 @@
-body{
-    height: 24rem;
+.main-div-style{
+    justify-content: center;
+    align-content: center;
+}
+.main-sub1-div-style{
+    border: 1px solid #d9d9e1;
+    border-radius: 20px;
+    margin-top:2rem;
+    margin-bottom:2.5rem;
+    box-shadow: -5px 0px 70px 3px #d1cccc;
+}
+.main-sub1-div-style-form-button{
+    width: 45%!important;
+    height: 40px!important;
+    background-color: #2f893e!important; 
+    font-size: 18px!important; 
+    display: flex!important; 
+    border: none!important; 
+    justify-content: center!important; 
+    align-items: center !important;
+}
+.main-sub1-div-style-redirect-login{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 1rem;
+}
+
+.divForAccessCssFlex {
+    position: relative!important;
+}
+.anim-effect {
+    position: absolute!important;
+    top: 10px!important;
+    left: 10px!important;
+    font-size: 13px!important;
+    transition: 0.5s ease-in-out!important;
+    color: #604545!important;
+    width: 8rem!important;
+}
+.padding-bet-inputs {
+    margin: 35px 0px!important;
+
+}
+
+input:focus~.anim-effect,
+input:valid~.anim-effect {
+    top: -30px!important;
+    left: -5px!important;
+    color: black!important;
+}
+
+
+
+
+
+
+
+
+/* .main-div-style{
+    justify-content: center;
+    align-content: center;
+} */
+.main-sub1-div-style{
+    border: 1px solid #d9d9e1!important;
+    border-radius: 15px!important;
+    margin-top:2rem!important;
+    margin-bottom:2.5rem!important;
+    box-shadow: -5px 0px 70px 3px #d1cccc!important;
+}
+.main-sub1-div-style-form-button{
+    width: 70%!important;
+    height: 37px!important;
+    background-color: #2f893e!important;
+    font-size: 18px!important;
+    display: flex!important;
+    border: none!important;
+    justify-content: center!important;
+    align-items: center!important;
+    margin-bottom: 1rem!important;
+}
+.loginPage-InnerForm-CreateNewAccAndForGetPass{
+    padding-top: 13px!important;
+    padding-bottom: 9px;flex-direction: column!important;
+}
+.loginPage-InnerForm-ForGetPass{
+    color: #727a83!important;
+    font-size: 12px!important;
+    padding-left: 5px!important;
+}
+.loginPage-InnerForm-buttonDiv{
+    display: flex!important;
+    justify-content: center!important;    
+    margin-bottom: 15px!important;
+    margin-top: 14px!important;
+}
+/* label{
+    color: rgb(207 29 29);
+    position: absolute;
+    right: 0px;
+    font-size: 12px;
+    top: 43px;
+} */
+/* .divForAccessCssFlex {
+    position: relative;
+}
+.anim-effect {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 13px;
+    transition: 0.5s ease-in-out;
+    color: #604545;
+    width: 8rem;
+} 
+.padding-bet-inputs {
+    margin: 35px 0px;
+
+}
+ input:focus~.anim-effect,
+input:valid~.anim-effect {
+    top: -30px;
+    left: -5px;
+    color: black;
+} */
+.login-page-top-logo{
+    color: #524747!important;    
+    font-size: 30px!important;
+    color: #1c1919!important;
+    display: flex!important;
+    justify-content: center!important;
+    align-items: center!important;
+}
+
+.scrollHide::-webkit-scrollbar{
+    display: none;
+    
 }

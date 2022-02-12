@@ -1,43 +1,82 @@
 <section class="vh-100">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-12 text-black"
-                style="display: flex!important; justify-content: center; align-content: center;">
-                <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5"
-                    style="border: 1px solid #d9d9e1;">
-                    <form action="/signup" method="post" name="formvalidate" onsubmit="return validate()"
-                        style="width: 23rem;">
-                        <div class="pb-5">
-                            <span><i class="fas fa-crow fa-2x me-3 pt-5 mt-xl-4" style="color: #709085;"></i></span>
-                            <span class="h2 fw-bold mb-0"
-                                style="border-bottom: 3px solid #b3c3ae;padding: 5px;">SIGNUP</span>
-                        </div>
-                        <div class="form-outline mb-4">
-                            <label class="form-label" for="form2Example18">Full Name</label>
-                            <input type="text" id="form2Example18" class="form-control" name="name" />
-                        </div>
-                        <div class="form-outline mb-4">
-                            <label class="form-label" for="form2Example18">Email address</label>
-                            <input type="email" id="form2Example18" class="form-control" name="emailaddr" />
-                        </div>
-                        <div class="form-outline mb-4">
-                            <label class="form-label" for="form2Example28">Password</label>
-                            <input type="password" id="form2Example28" class="form-control" name="password" />
-                        </div>
-                        <div class="form-outline mb-4">
-                            <label class="form-label" for="form2Example28">Confirm Password</label>
-                            <input type="password" id="form2Example28" class="form-control" name="re_password" />
-                            <label id="error_password" style="display: none;" for="">Note match password</label>
-                        </div>
-                        <div class="col-12 mt-1 mb-2">
-                            <a class="text-primary" href="/login">Create new account ?</a>
-                        </div>
-                        <div class="pt-1 mb-4">
-                            <button class="btn btn-info btn-lg btn-block" type="submit">Login</button>
-                        </div>
-                    </form>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 text-black d-flex main-div-style" style="margin-top: 20px;">
+                      <div>
+                    <a  onclick="Windowless(1)" style="cursor: pointer;">
+                      <i  class="far fa-times-circle" style="font-size: 23px;" ></i>
+                    </a>
+                  
+                </div>
+                    <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 pt-5 pt-xl-0 mt-xl-n5 main-sub1-div-style">
+                        <form action="/signup" method="post" id="signupForm" style="width: 23rem;">
+                            <div class="text-center" style="padding-top: 2rem;">
+                                <span class="h2 fw-bold mb-0" style="font-size: 28px;color: #524747;">Create a new account</span>
+                            </div>
+                            <div class="form-outline mb-4 divForAccessCssFlex">
+                                <input type="text" name="name" id="validationSuccess" class="form-control padding-bet-inputs" required>
+                                <label class="form-label anim-effect" for="validationSuccess" id="n">Full Name</label>
+                            </div>
+                            <div class="form-outline mb-4 divForAccessCssFlex">
+                                <input type="email" class="form-control padding-bet-inputs" name="email" id="email" required />
+                                <label class="form-label anim-effect focus" for="form2Example18">Email address</label>
+                            </div>
+                            <div class="form-outline mb-4 divForAccessCssFlex">
+                                <input type="password" class="form-control padding-bet-inputs" name="password" id="password" required />
+                                <label class="form-label anim-effect" for="form2Example28">Password</label>
+                            </div>
+                            <div class="form-outline mb-4 divForAccessCssFlex">
+                                <input type="password" class="form-control padding-bet-inputs" name="confirm_password" id="conpassword"
+                                    required />
+                                <label class="form-label anim-effect" for="form2Example28">Confirm Password</label>
+                            </div>
+                            <div class="pt-1 mb-4 text-center" style="display: flex;justify-content: center;">
+                                <button class="btn btn-info btn-lg btn-block main-sub1-div-style-form-button" type="submit">Login</button>
+                            </div>
+                            <div class="col-12 mt-1 mb-2 div main-sub1-div-style-redirect-login">
+                                <a class="" style="color: #4e9df3!important;" href="/login">Already have an account?</a>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+
+
+
+    <style>
+       
+
+
+.divForAccessCssFlex {
+    position: relative;
+}
+.anim-effect {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 13px;
+    transition: 0.5s ease-in-out;
+    color: #604545;
+    width: 8rem;
+}
+.padding-bet-inputs {
+    margin: 35px 0px;
+
+}
+label{
+    color: rgb(207 29 29)!important;
+    position: absolute!important;
+    right: 0px!important;
+    font-size: 12px!important;
+    top: 43px!important;
+    padding-right: 7px!important;
+}
+input:focus~.anim-effect,
+input:valid~.anim-effect {
+    top: -30px;
+    left: -5px;
+    color: black;
+}
+    </style>

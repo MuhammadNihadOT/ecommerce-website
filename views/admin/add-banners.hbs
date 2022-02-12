@@ -1,0 +1,30 @@
+<section>
+    <div class="container">
+        <form action="/admin/add-banners" method="POST" enctype="multipart/form-data">
+            <div class="row w-50 mt-4">
+                <div class="text-center w-100">
+                    <h3 class="font-weight-bold">Add Banner</h3>
+                </div>
+                <div class="col-12">
+                    <label>Name</label>
+                    <input type="text" class="form-control" name="name" />
+                </div>
+                <div class="col-12">
+                    <label>Category</label>
+                    <input type="text" class="form-control" name="category" />
+                </div>
+                <div class="col-12">
+                    <label>Image</label>
+                    <input type="file" class="form-control" name="image" />
+                </div>
+                <div class="col-12">
+                    <label>Descryption</label>
+                    <input type="text" class="form-control" name="description" />
+                </div>
+                <div class="ml-3">
+                    <button type="submit" class="btn btn-success mt-3">Sign in</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

@@ -1,39 +1,56 @@
 <section class="vh-100">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-sm-12 text-black"
-        style="display: flex!important; justify-content: center; align-content: center;">
-        <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5"
-          style="border: 1px solid #d9d9e1;">
-          <form action="/login" method="post" style="width: 23rem;">
-            <div class="pb-5">
-              <span><i class="fas fa-crow fa-2x me-3 pt-5 mt-xl-4" style="color: #709085;"></i></span>
-              <span class="h2 fw-bold mb-0" style="border-bottom: 3px solid #b3c3ae;padding: 5px;">LOGIN</span>
+        <div class="container-fluid">
+            <div class="row">
+              
+                <div class="col-sm-12 text-black d-flex main-div-style" style="margin-top: 2rem;">
+                  <div>
+                    <a  onclick="Windowless(1)" style="cursor: pointer;">
+                      <i  class="far fa-times-circle" style="font-size: 23px;" ></i>
+                    </a>
+                  
+                </div>
+                    <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 pt-5 pt-xl-0 mt-xl-n5 main-sub1-div-style">
+                      
+                        <form action="/login" method="post" id="LoginForm" style="width: 20rem;">
+                            <div class="text-center" style="padding-top: 2rem;">
+                                <span class="h2 fw-bold mb-0 login-page-top-logo" >
+                                    <i class="fas fa-user-circle" style="font-size: 45px;padding: 10px;"></i>Login</span>
+                            </div>
+                            <div class="form-outline mb-4 divForAccessCssFlex" style="">
+                                <label class="form-label " for="form2Example18" style="position:unset!important;color: black!important;">Email address</label>
+                                <input type="email" class="form-control" name="emailaddr" id="email" required />
+                            </div>
+                            <div class="form-outline divForAccessCssFlex">
+                                <label class="form-label" for="form2Example28" style="position:unset!important;color: black!important;">Password</label>
+                                <input type="password" class="form-control" name="password" id="password" required />
+                            </div>
+                            <div class="row col-12 loginPage-InnerForm-CreateNewAccAndForGetPass" >
+                                <a class="text-muted" style="color: #727a83!important;font-size:14px" href="/signup">Create new account ?</a>
+                                <a class="text-muted loginPage-InnerForm-ForGetPass" href="#!">Forgot password?</a>
+                            </div>
+                            <div class="pt-1 mb-4 text-center loginPage-InnerForm-buttonDiv">
+                                <button class="btn btn-info btn-lg btn-block main-sub1-div-style-form-button" type="submit">Login</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-            {{#if userLogErr}}
-            <div class="col-12">
-              <a class="error">{{userLogErr}}</a>
-            </div>
-            {{/if}}
-            <div class="form-outline mb-4">
-              <label class="form-label" for="form2Example18">Email address</label>
-              <input type="email" id="form2Example18" style="font-size: 15px!important;"
-                class="form-control form-control-lg" name="emailaddr" />
-            </div>
-            <div class="form-outline mb-4">
-              <label class="form-label" for="form2Example28">Password</label>
-              <input type="password" id="form2Example28" class="form-control form-control-lg" name="password" />
-            </div>
-            <div class="col-12 mt-1 mb-2">
-              <a class="text-primary" href="/signup">Create new account ?</a>
-            </div>
-            <div class="pt-1 mb-4">
-              <button class="btn btn-info btn-lg btn-block" type="submit">Login</button>
-            </div>
-            <p class="small mb-5 pb-lg-2"><a class="text-muted" href="#!">Forgot password?</a></p>
-          </form>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
+
+<style>
+  label{
+    color: rgb(207 29 29)!important;
+    position: absolute!important;
+    right: 0px!important;
+    font-size: 12px!important;
+    top: 43px!important;
+    padding-right: 7px!important;
+}
+</style>
+
+<script>
+  
+</script>
+
+    

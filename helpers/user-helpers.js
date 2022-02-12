@@ -211,10 +211,16 @@ module.exports = {
       resolve(cart)
 
     })
+    
   },
   placeOrder: (order, products, totalprice, userId) => {
     products = products.products
     return new Promise(async (resolve, reject) => {
+      var today = new Date();
+      var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+      var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+      var dateTime = 'Date&Time '+date+' '+time;
+      console.log(dateTime)
       let userData = await db.get().collection(collection.USER_COLLECTION).findOne({ _id: objectId(userId) })
       let status = order.payment === 'COD' ? 'placed' : 'pending'
       let orderObj = {
@@ -229,7 +235,7 @@ module.exports = {
         paymentMethod: order.payment,
         products: products,
         totalAmount: totalprice[0].total,
-        date: new Date(),
+        date: dateTime,
         status: status
       }
       db.get().collection(collection.ORDER_COLLECTION).insertOne(orderObj).then((response) => {
@@ -307,7 +313,7 @@ module.exports = {
     total = total[0].total
     return new Promise((resolve,reject)=>{
       instance.orders.create({
-        amount: total,
+        amount: total*100,
         currency: "INR",
         receipt: ''+orderId,
         notes: {

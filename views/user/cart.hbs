@@ -1,4 +1,4 @@
-<section>
+{{!-- <section>
   <div class="container">
     {{#if products}}
     <table class="table mt-4">
@@ -50,4 +50,92 @@
     <h2 class="mt-5">Cart is empty !!</h2>
     {{/if}}
   </div>
-</section>
+</section> --}}
+
+
+
+
+
+
+
+{{#if products}}
+<div class="container cart-containerDiv-styles" style="margin-top: 3rem;box-shadow: 10px;box-shadow: 0px 0px 6px 0px #888888;border-radius: 8px;height: 50rem;height: auto;padding-bottom: 0rem;margin-bottom: 8rem;">
+		<div>
+			<div class="top-content scroll-null" style="" id="main">
+				<div class="top-content" style="padding: 2rem;padding-top: 2rem;">
+					<a href="" class="cart-containerDiv-styles-forlogo" style="font-size: 2rem;color: #564f4c;text-decoration: none;">Items in Your Bag</a>
+					<hr>
+				</div>
+			</div>
+			<!-- _____________________________________________________________ -->
+      <div class="scrollHide" style="height: 30rem;
+    overflow-x: hidden;
+    overflow-y: scroll;">
+      {{#each products}}
+  <div style="display: flex;flex-direction: row;margin-bottom: 2rem;">
+    	<div class="top-content col-sm-3">
+				<div class="cart-content text-center">
+					<img src="/product-images/{{this.product._id}}.jpg" style="width: 7rem;;height: auto;" alt="">
+				</div>
+			</div>
+			<div class="top-content col-sm-9" id="mm" style="display: flex;padding-bottom: 2rem;flex-direction:row;">
+				<div class="" style="display: flex;flex-direction: column;width:100%">
+					<p id="h3" href="" style="color: #343638;margin-top: 0px !important;font-size: 20px">{{this.product.name}}</p>
+					<div style="border-bottom: 1px solid #ddd;cursor: no-drop;"></div>
+					<a href="" style="padding: 14px 2px;color:#70777c; text-decoration: none;cursor: no-drop;">Delivers tomorrow - fatest | wed sep 7 pm</a>
+					<a href="" style="text-decoration: none;color: #555566;"><i class="fas fa-gift" style="font-size: 20px;padding: 7px;"></i>show gift options</a>
+				</div>
+				<div class="" style=" display: flex;font-size: 15px;justify-content: space-evenly;width: 69%;flex-wrap: nowrap;border-left: 1px solid #ddd;">
+					<div>
+						<a href="" style="  text-decoration: none;  color: #1e2022;    font-size: 20px;cursor: no-drop;"><span style="font-size: 23px;text-decoration: none;">₹</span>{{this.product.price}}</a>
+					</div>
+					<div>
+						<button style="border: none;color: black;padding: 1px 5px;background-color: #e5e4e4;" onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',-1)">-</button><span style="padding: 20px;" id="{{this.product._id}}">{{this.quantity}}</span><button style="border: none;color: black;padding: 1px 5px;background-color: #e5e4e4;" onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',1)">+</button>
+					</div>
+					<div>
+						<a href="" style="color: #1e2022;font-size: 16px;text-decoration: none;cursor: no-drop;"><span style="text-decoration: none;">₹</span>{{this.product.price}}</a>
+						<button style="     position: absolute;top: 71px;right: 30px;color: #1e9972;cursor: pointer;border: none;font-size: 15px;background-color: #f3f3f3;" onclick="DeleteProductFromCart('{{this._id}}','{{this.product._id}}')">Remove</button>
+					</div>
+				</div>
+			</div>
+  </div>
+      {{/each}}
+      </div>
+			<!-- _______________________________________________________________ -->
+			<!-- Button -->
+			<div class="col-sm-12" style="display: flex;height: 110px;display: flex;align-items: flex-end;">
+				<div class=" " style="width: 100%;display: flex;flex-direction: column;align-items: flex-end;font-size: 13px;align-content: space-around;">
+					<a href="" style="  color: #111;padding: 0px 0px;text-decoration: none;font-size: 14px;cursor: no-drop;">Cart Subtotal <span style="  padding-left: 10px;font-size: 15px;">₹</span>         
+          <span id="Subtotal">
+          {{#each total}} 
+            {{this.total}} 
+          {{/each }}
+          </span></a>
+					<a href="" style="     color: #d52828f2;padding: 5px 5px;text-decoration: none;font-size: 15px;cursor: no-drop;">Free Shipping <span><span style="padding-left: 10px;font-size: 15px;">₹</span>0.00</span></a>
+					<a href="" style="     color: #111;padding: 0px 0px;font-size: 17px;text-decoration: none;cursor: no-drop;">Total Amount <span style="padding-left: 10px;font-size: 15px;">₹</span> <span id="totalAmount">
+          {{#each total}} 
+            {{this.total}} 
+          {{/each }}
+          </span></a>
+				</div>
+				</div>
+					<div class="col-sm-12">
+						<div class="button" style=" display: flex;padding: 15px 20px;justify-content: flex-end;">
+							<a class="btn btn-primary" href="/place-order" style="border: none;
+    font-size: 16px;
+    color: #e9e9e9;
+    border-radius: 5px;
+    width: 140px;
+    height: 35px;
+    margin-bottom: 2rem;">Place Order</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Button -->
+		</div>
+	</div>
+  
+   {{else}}
+    <h2 class="mt-5 pl-5">Cart is empty !!</h2>
+    {{/if}}

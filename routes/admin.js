@@ -86,7 +86,7 @@ router.get('/login', (req, res) => {
   if (req.session.adminLoggedIn) {
     res.redirect("/admin", { admin });
   } else {
-    res.render("admin/login", { adminLogErr: req.session.adminLogErr, admin });
+    res.render("admin/login", { adminLogErr: req.session.adminLogErr });
     req.session.adminLogErr = false;
   }
 })
@@ -128,4 +128,23 @@ router.get('/shipped/:id', async (req, res) => {
   res.render('admin/shipped', { admin, shipped })
 })
 
+router.get('/add-banners',(req,res)=>{
+  res.render('admin/add-banners',{admin})
+})
+
+router.post('/add-banners',(req,res)=>{
+  console.log(req.body)
+  console.log(req.files.image)
+  let image = req.files.image
+  productHelpers.addBanner(req.body,(id)=>{
+    console.log(id)
+    image.mv('./public/images/' + id + '.jpg', (err) => {
+      if (!err) {
+        res.redirect('/admin/add-banners')
+      } else {
+        console.log(err)
+      }
+    })
+  })
+})
 module.exports = router;

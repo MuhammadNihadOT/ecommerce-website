@@ -3,33 +3,35 @@
         <form action="" id="checkout-form" name="checkout-form">
             <div class="row d-flex" style="justify-content: space-around;align-items: center;">
                 <div class=" w-50 mt-5">
-                    <div class="text-center w-100">
-                        <h4 class="font-weight-bold">Enter Delivery Details</h4>
+                    <div class="text-center w-100" style="    background-color: #d1d1d1;height: 50px;display: flex;align-content: flex-start;justify-content: center;align-items: center;">
+                        <a class="font-weight-bold" style="font-size: 20px;">Enter Delivery Details</a>
                     </div>
-                    <div class="col-12">
-                        <label>Address</label>
-                        <input type="text" class="form-control" name="address" />
-                    </div>
-                    <div class="col-12">
-                        <label>Pincode</label>
-                        <input type="number" class="form-control" name="pincode" />
-                    </div>
-                    <div class="col-12">
-                        <label>Mobile</label>
-                        <input type="number" class="form-control" name="mobile" />
-                    </div>
-                    <div>
-                        <input type="text" value="{{user._id}}" name="userId" hidden>
+                    <div style="    box-shadow: 0px 0px 20px 3px #cbc3c3;padding-bottom: 35px;">
+                        <div class="col-12">
+                            <label style="position: static!important;color: black!important;font-size: 15px!important">Address</label>
+                            <input type="text" class="form-control" name="address" required />
+                        </div>
+                        <div class="col-12">
+                            <label style="position: static!important;color: black!important;font-size: 15px!important">Pincode</label>
+                            <input type="number" class="form-control" name="pincode" required/>
+                        </div>
+                        <div class="col-12">
+                            <label style="position: static!important;color: black!important;font-size: 15px!important">Mobile</label>
+                            <input type="number" class="form-control" name="mobile" required />
+                        </div>
+                        <div>
+                            <input type="text" value="{{user._id}}" name="userId" hidden>
+                        </div>  
                     </div>
                 </div>
                 <div class="">
-                    <div class="mt-5" style="border: 1px solid #a4ada4; width: 360px; height: 225px;">
+                    <div class="mt-5" style=" width: 360px; height: 225px;    box-shadow: 1px 0px 30px 0px #ddd7d7;">
                         {{#each total}}
                         <h5 class="text-center pt-3">Total Amount: Rs.{{this.total}}</h5>
                         {{/each}}
                         <hr class="w-75">
                         <a href="" class="pl-4" style="text-decoration: none;color:black;">Payment method</a><br>
-                        <input class="mt-2 ml-4" type="radio" name="payment" value="COD"> COD <br>
+                        <input class="mt-2 ml-4" type="radio" name="payment" value="COD" required> COD <br>
                         <input class="ml-4" type="radio" name="payment" value="online-payment"> Online Payment <br>
                         <div class="text-center">
                             <button type="submit" class="btn btn-primary mt-3 float-right mr-5">Check Out</button>
@@ -113,11 +115,12 @@ var rzp1 = new Razorpay(options);
                 order:order
             },
             success:(response)=>{
-                console.log('loggggg')
+               
                 if(response.status){
                      location.href = '/order-success'
                 }else{
                     alert('Payment failed')
+                    location.href('/')
                 }
             }
             
