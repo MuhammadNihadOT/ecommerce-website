@@ -1,0 +1,36 @@
+<section>
+    <div class="container">
+        <form action="/admin/edit-category/{{category._id}}" method="POST" enctype="multipart/form-data">
+            <div class="row w-50 mt-4">
+                <div class="text-center w-100">
+                    <h3 class="font-weight-bold">Edit Category </h3>
+                </div>
+                <div class="col-12">
+                    <label>Name</label>
+                    <input type="text" class="form-control" name="name" value="{{category.name}}" />
+                </div>
+                {{!-- <div class="col-12">
+                    <label>Category</label>
+                    <input type="text" class="form-control" name="category" value="{{product.category}}" />
+                </div>
+                <div class="col-12">
+                    <label>Price</label>
+                    <input type="text" class="form-control" name="price" value="{{product.price}}" />
+                </div> --}}
+                <div class="col-12">
+                    <label>Description</label>
+                    <input type="text" class="form-control" name="description" value="{{category.description}}" />
+                </div>
+                <div class="col-12">
+                    <label>Image</label>
+                    <img src="/category-images/{{category._id}}.jpg" style="width: 100px;height: auto;    width: 101px; padding-top: 2rem; padding-bottom: 2rem; margin-left: 2rem; height: auto;" id="imgViewCat">
+                    <input type="file" class="form-control" name="image" onchange="viewImageCategory(event)" />
+                </div>
+                <div class="ml-3" style="padding-bottom:2rem">
+                    <button type="submit" class="btn btn-success mt-3">Update Category</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+

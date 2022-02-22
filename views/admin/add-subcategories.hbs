@@ -1,0 +1,47 @@
+<section>
+    <div class="container">
+        <form  action="/admin/add-subcategories" method="post" enctype="multipart/form-data">
+            <div class="row w-50 mt-4">
+                <div class="text-center w-100">
+                    <h3 class="font-weight-bold">Add Subcategories</h3>
+                </div>
+                <div class="col-12">
+                    <label>Name</label>
+                    <input type="text" class="form-control" name="name" />
+                </div>
+                <div class="col-12">
+                    <label>Image</label>
+                    <img src="" alt="" width="65px" height="50px" id="imgViewSubCat">
+                    <input type="file" class="form-control" name="image" onchange="viewImageSubCategory(event)"  />
+                </div>
+                <div class="col-12">
+                    <label>Description</label>
+                    <input type="text" class="form-control" name="description" />
+                </div>
+                <div class="ml-3">
+                    <button type="submit" class="btn btn-success mt-3">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+
+
+<script>
+    $('#AddsubCat').submit((e) => {
+  e.preventDefault()
+  $.ajax({
+    url: '/admin/add-subcategories',
+    method: 'post',
+    data: $('#AddsubCat').serialize(),
+    success: (response) => {
+
+      if (response.status) {
+        alert('Successfully added ')
+        location.reload('/admin')
+      }
+    }
+  })
+})
+</script>

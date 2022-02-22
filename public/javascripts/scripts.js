@@ -43,17 +43,17 @@ function validate() {
   }
   return false
 }
-$('#checkout-form').submit((e) => {
+$('#signupForm').submit((e) => {
   e.preventDefault()
   $.ajax({
-    url: '/place-order',
+    url: '/signup',
     method: 'post',
-    data: $('#checkout-form').serialize(),
+    data: $('#signupForm').serialize(),
     success: (response) => {
 
       if (response.status) {
-        alert('Order Placed Successfully')
-        location.href = '/order-success'
+        alert('Successfully Login')
+        // location.href = '/order-success'
       }
     }
   })
@@ -114,8 +114,11 @@ function DeleteProductFromCart(cartId, productId) {
     }
   })
 }
-function viewImage(event) {
-  document.getElementById('imgView').src = URL.createObjectURL(event.target.files[0])
+function viewImageCategory(event) {
+  document.getElementById('imgViewCat').src = URL.createObjectURL(event.target.files[0])
+}
+function viewImageSubCategory(event) {
+  document.getElementById('imgViewSubCat').src = URL.createObjectURL(event.target.files[0])
 }
 function changeToShipping(orderId) {
   $.ajax({

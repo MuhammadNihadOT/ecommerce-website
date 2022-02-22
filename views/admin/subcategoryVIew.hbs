@@ -1,0 +1,48 @@
+{{!-- <h1>haloooooooooooooo</h1> --}}
+
+<section>
+  <div class="container">
+    <div class="row mt-4 mb-4">
+    </div>
+    <table class="table mt-4" id="y">
+      <thead>
+        <tr>
+          <th scope="col">SubCategories Name</th>
+          {{!-- <th>link</th> --}}
+          <th></th>
+          <th></th>
+          <th></th>
+          {{!-- <th>Show</th> --}}
+        </tr>
+      </thead>
+      <tbody>
+          {{#each subCategories}}
+        <tr>
+          <td>{{this.name}}</td>
+          {{!-- <td>hu</td> --}}
+          {{!-- <td>gg</td> --}}
+          <td>
+              <a style="text-decoration: none;color: aliceblue;" href="/admin/add-link/{{this._id}}" class="btn btn-primary">Add Link</a>
+              <a style="text-decoration: none;color: aliceblue;" href="/admin/view-link/{{this._id}}" class="btn btn-secondary">View Link</a>
+          </td>
+          <td>
+              
+          </td>
+          <td>
+            <a style="text-decoration: none;color: aliceblue;" href="/admin/edit-subcategory/{{this._id}}" class="btn btn-success">Edit</a>
+            <a style="text-decoration: none;color: aliceblue;" href="/admin/delete-subcategory/{{this._id}}" onclick="return confirm('Are you want to delete {{this.name}} ')" class="btn btn-danger">Delete</a>
+          </td>
+          {{!-- <td>
+            
+          </td> --}}
+        </tr>
+            {{/each}}
+      </tbody>
+    </table>
+  </div>
+</section>
+<script>
+  $(document).ready(function () {
+    $('#y').DataTable();
+  });
+</script>

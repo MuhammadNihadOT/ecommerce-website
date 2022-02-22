@@ -1,8 +1,9 @@
 module.exports = {
-    PRODUCT_COLLECTION: 'product',
+    // PRODUCT_COLLECTION: 'product',
     USER_COLLECTION: 'user',
-    CART_COLLECTION: 'cart',
-    ORDER_COLLECTION: 'order',
+    CATEGORY_COLLECTION: 'category',
+    SUBCATEGORY_COLLECTION: 'subcategory',
     ADMIN_COLLECTION: 'admin',
-    BANNER_COLLECTION: 'banner'
+    LINK_COLLECTION : 'links'
+    // BANNER_COLLECTION: 'banner'
 }

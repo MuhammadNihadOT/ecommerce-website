@@ -1,35 +1,36 @@
 <section>
     <div class="container">
-        <form action="/admin/edit-product/{{product._id}}" method="POST" enctype="multipart/form-data">
+        <form action="/admin/edit-link/{{value._id}}" method="POST" enctype="multipart/form-data">
             <div class="row w-50 mt-4">
                 <div class="text-center w-100">
-                    <h3 class="font-weight-bold">Edit Product</h3>
+                    <h3 class="font-weight-bold">Edit Category </h3>
                 </div>
                 <div class="col-12">
                     <label>Name</label>
-                    <input type="text" class="form-control" name="name" value="{{product.name}}" />
+                    <input type="text" class="form-control" name="link" value="{{value.link}}" />
                 </div>
-                <div class="col-12">
+                {{!-- <div class="col-12">
                     <label>Category</label>
                     <input type="text" class="form-control" name="category" value="{{product.category}}" />
                 </div>
                 <div class="col-12">
                     <label>Price</label>
                     <input type="text" class="form-control" name="price" value="{{product.price}}" />
-                </div>
+                </div> --}}
                 <div class="col-12">
                     <label>Descryption</label>
-                    <input type="text" class="form-control" name="description" value="{{product.description}}" />
+                    <input type="text" class="form-control" name="description" value="{{value.description}}" />
                 </div>
-                <div class="col-12">
+                {{!-- <div class="col-12">
                     <label>Image</label>
                     <img src="/product-images/{{product._id}}.jpg" style="width: 100px;height: auto;    width: 101px; padding-top: 2rem; padding-bottom: 2rem; margin-left: 2rem; height: auto;" id="imgView">
                     <input type="file" class="form-control" name="image" onchange="viewImage(event)" />
-                </div>
+                </div> --}}
                 <div class="ml-3" style="padding-bottom:2rem">
-                    <button type="submit" class="btn btn-success mt-3">Update Product</button>
+                    <button type="submit" class="btn btn-success mt-3">Update Category</button>
                 </div>
             </div>
         </form>
     </div>
 </section>
+

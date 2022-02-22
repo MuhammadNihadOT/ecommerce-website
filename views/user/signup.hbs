@@ -1,4 +1,4 @@
-<section class="vh-100">
+{{!-- <section class="vh-100">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-12 text-black d-flex main-div-style" style="margin-top: 20px;">
@@ -79,4 +79,141 @@ input:valid~.anim-effect {
     left: -5px;
     color: black;
 }
+    </style> --}}
+
+
+
+
+ <section style="display:flex;justify-content:flex-end;padding-right:25px;padding-top:25px;">
+     {{!-- <dir>hy</dir> --}}
+        <div>
+            <a href="/close" style="text-decoration:none;cursor:pointer;color: black;font-size:20px;">X</a>
+        </div>
+        <div></div>
+    </section>
+    <section>
+        {{#if EmailError}}
+            <div style="">
+            <div style="
+
+    padding-right: 11px;
+    text-align: center;
+    color: #fd0000;
+    border: 1px solid #d9d9d9;
+    margin: 20px 0px;
+    /* padding: 0px; */
+    padding-top: 15px;">
+                <p>{{EmailError}}</p>
+            </div>
+        </div>
+        {{/if}}
+        
+    </section>
+    <section class="vh-100">
+        <div class="container-fluid">
+            <div class="row" style="justify-content: center;">
+                    <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 pt-1 pt-xl-0 mt-xl-n5 main-sub1-div-style">
+                        <form action="signup" method="post" id="signupForm" class="signup-form">
+                            <div class="text-center top-text" style="">
+                                <span class="h2 fw-bold mb-0 signup-logo" style="color: #524747;">Create a new account</span>
+                            </div>
+                            <div class="form-outline mb-4 divForAccessCssFlex">
+                                <input type="text" name="name" id="validationSuccess" class="form-control padding-bet-inputs" required>
+                                <label class="form-label anim-effect" for="validationSuccess" id="n">Full Name</label>
+                            </div>
+                            <div class="form-outline mb-4 divForAccessCssFlex">
+                                <input type="email" class="form-control padding-bet-inputs" name="email" id="email" required />
+                                <label class="form-label anim-effect focus" for="form2Example18">Email address</label>
+                                
+                            </div>
+                            <div class="form-outline mb-4 divForAccessCssFlex">
+                                <input type="password" class="form-control padding-bet-inputs" name="password" id="password" required />
+                                <label class="form-label anim-effect" for="form2Example28">Password</label>
+                            </div>
+                            <div class="form-outline mb-4 divForAccessCssFlex">
+                                <input type="password" class="form-control padding-bet-inputs" name="confirm_password" id="conpassword" required />
+                                <label class="form-label anim-effect" for="form2Example28">Confirm Password</label>
+                            </div>
+                            <div class="pt-1 mb-4 text-center" style="display: flex;justify-content: center;">
+                                <button class="btn btn-info btn-lg btn-block main-sub1-div-style-form-button" type="submit">Login</button>
+                            </div>
+                            <div class="col-12 mt-1 mb-2 div main-sub1-div-style-redirect-login">
+                                <a class="redirect-login-text" style="color: #4e9df3!important;" href="/login">Already have an account?</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <style>
+        .signup-form{
+            width: 23rem;
+        }
+       .top-text{
+            padding-top: 2rem;
+        }
+        .signup-logo{
+            font-size: 24px;
+        }
+        .redirect-login-text{
+            font-size: 17px;
+        }
+        @media (max-width:530px){
+            .top-text{
+                padding-top: 2rem;
+            }
+            .signup-form{
+                width: 18rem;
+            }
+            .redirect-login-text{
+                font-size: 15px;
+            }
+        }
+        @media (max-width:400px){
+            .top-text{
+                padding-top: 2rem;
+            }
+            .signup-form{
+                width: 15rem;
+            }
+            .signup-logo{
+                font-size: 24px;
+            }
+            .redirect-login-text{
+                font-size: 12px;
+            }
+        }
+        .divForAccessCssFlex {
+            position: relative;
+        }
+        .anim-effect {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 13px;
+            transition: 0.5s ease-in-out;
+            color: #604545;
+            width: 8rem;
+        }
+        .padding-bet-inputs {
+            margin: 35px 0px;
+        }
+        label{
+            color: rgb(207 29 29)!important;
+            position: absolute!important;
+            right: 0px!important;
+            font-size: 12px!important;
+            top: 43px!important;
+            padding-right: 7px!important;
+        }
+        input:focus~.anim-effect,
+        input:valid~.anim-effect {
+            top: -30px;
+            left: -5px;
+            color: black;
+        }
     </style>

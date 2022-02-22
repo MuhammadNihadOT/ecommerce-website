@@ -1,0 +1,134 @@
+{{!-- <section>
+  <div class="container">
+    <div class="row" style="padding-top: 7rem;">
+      {{#if product}}
+      <div class="col-lg-6 text-center">
+        <img class="card-img-top" src="/product-images/{{product._id}}.jpg" alt="Loading..." style="width: 11rem;height: 13rem;">
+      </div>
+      <div class="col-lg-6" style="padding-top: 4rem;">
+        <h3>{{product.name}}</h3>
+        <p>{{product.category}}</p>
+        <p>Price.{{product.price}}</p>
+        <h4>About Product</h4>
+        <p style="overflow-wrap: break-word;">{{product.about}}</p>
+        <div style="text-align: end;padding: 18px 5px;">
+          <button onclick="addToCart('{{product._id}}')" class="btn btn-primary ">Add Cart</button>
+        </div>
+      </div>
+      {{/if}}
+    </div>
+  </div>
+</section> --}}
+
+
+
+{{!-- <section>
+  <div class="container-fluid">
+    <div class="row" style="margin: 20px 30px;margin-top:60px">
+      {{#each SubCat}}
+      <div class="hover" style="      width: 100%;
+          margin-bottom: 25px;
+
+    /* background-color: skyblue; */
+    display: flex;
+    height: 55px;
+    align-items: center;
+    padding: 35px 0px;
+    border: 1px solid #dfdcdc;
+    border-radius: 12px;
+    justify-content: space-between;">
+        <div>
+          <p style="     padding: 30px;
+    margin-top: unset;
+    margin-bottom: unset;
+    font-weight: 500;
+    font-size: 18px;">{{this.name}}</p>
+        </div>
+        <div style="
+    width: -3px;
+    padding-right: 21px;">
+          <button style="border-radius: 24px;
+    border: 1px solid green;
+    background-color: white;
+    color: green;
+    width: 100px;
+    " class="btn button">click me</button>
+        </div>
+        {{!-- <hr> --}}
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</section>
+<style>
+  .hover:hover{
+    border: 1px solid green!important;
+    transform: scale(1.0);
+  }
+  .button:hover{
+    background-color: green !important;
+    color: white !important;
+  }
+</style> --}}
+
+
+
+
+
+      {{!-- <a href="/admin/add-categories" class="btn btn-success ml-auto">Add Categories</a> --}}
+      {{!-- <a href="/admin/add-banners" class="btn btn-success ml-auto">Add Banners</a> --}}
+          {{!-- <th scope="col">#</th> --}}
+          {{!-- <th scope="col">Title</th> --}}
+          {{!-- <th scope="col">Price</th> --}}
+          {{!-- <th scope="col">Image</th> --}}
+          {{!-- <th scope="col">Option</th> --}}
+<section>
+  <div class="container">
+    <div class="row mt-4 mb-4">
+    </div>
+    <table class="table mt-4" id="y">
+      <thead>
+        <tr>
+          <th scope="col">SubCategories Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <h1>hyyyy</h1>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<script>
+  $(document).ready(function () {
+    $('#y').DataTable();
+  });
+</script>
+        {{!-- {{/each}} --}}
+        {{!-- {{#each subCategories}} --}}
+          {{!-- <td scope="row">1</td> --}}
+          
+          {{!-- <td>{{this.name}}</td> --}}
+          {{!-- <td>{{this.category}}</td> --}}
+          {{!-- <td>{{this._id}}</td> --}}
+          {{!-- <td><img style="width:50px;height:50px" src="/product-images/{{this._id}}.jpg" alt=""></td> --}}
+          {{!-- <td class="">
+            <a class="btn bg-warning text-white" href="/admin/view-subcategories/{{this._id}}">View Subcategories</a>
+            <a class="btn bg-primary text-white" href="/admin/add-subcategories/{{this._id}}">Add Subcategories</a>
+            <a class="btn bg-success text-white" href="/admin/edit-category/{{this._id}}">Edit</a>
+            <a class="btn bg-danger text-white" href="/admin/delete-category/{{this._id}}" onclick="return confirm('Are you want to delete {{this.name}} ')">Delete</a>
+          </td> --}}
+
+
+
+    
+
+
+
+
+
+
+
+
