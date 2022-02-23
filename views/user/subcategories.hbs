@@ -96,7 +96,7 @@
 <section>
   <div class="">
        {{#if name}}
-        <div style="        margin: 40px 20px;">
+        <div style="        margin: 40px 40px;">
         <h3 style="    letter-spacing: 1px;
     font-weight: 600;
     color: #564c4c;">{{name}}</h3>
@@ -143,12 +143,14 @@
         {{#each SubCat}}
           <div class="transform" style="/* background-color: aqua; */display: flex;flex-direction: row;align-items: center;padding-left: 20px;/* padding: 9px; */border-radius: 13px;border: 1px solid #efe7e7;box-shadow: 0px 0px 16px 3px #e5e5e5;    width: 350px;    margin: 15px 50px;">
             <div>
-                <img src="/sub-category-images/{{this._id}}.jpg"  width="60px" height="50px"  alt="">
+                <img src="/sub-category-images/{{this._id}}.jpg"  width="65px" height="50px"  alt="">
               </div>
               <div class="card-body" style="padding-left: 20px;">
-                <a  href="" style="text-decoration: none;color: black;">
+                {{!-- <div> --}}
+                  <a target="_blank"  href="{{this.link}}" style="text-decoration: none;color: black;" >
                   <h5 style="font-weight: 600;" class="card-title">{{this.name}}</h5>
                 </a>
+                {{!-- </div> --}}
               </div>
           </div>
         {{/each}}

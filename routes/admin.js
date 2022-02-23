@@ -18,6 +18,8 @@ var admin = true;
 
 
 
+
+
 //  --------------------------------------------------------------------------------
 // | *************************************HOME************************************* |
 //  --------------------------------------------------------------------------------
@@ -32,11 +34,6 @@ router.get('/', function (req, res, next) {
 //  --------------------------------------------------------------------------------
 // | *************************************HOME************************************* |
 //  --------------------------------------------------------------------------------
-
-
-
-
-
 
 
 
@@ -57,11 +54,6 @@ router.get('/all-users', (req, res) => {
 //  --------------------------------------------------------------------------------
 // | *************************************USERS************************************ |
 //  --------------------------------------------------------------------------------
-
-
-
-
-
 
 
 
@@ -167,21 +159,9 @@ router.post('/edit-subcategory/:id', (req, res) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//  --------------------------------------------------------------------------------
+// | ************************************ADDING************************************ |
+//  --------------------------------------------------------------------------------
 
 //----------GET-ADD-SUBCATEGORIES----------//
 router.get('/add-subcategories/:id', (req, res) => {
@@ -192,6 +172,7 @@ router.get('/add-subcategories/:id', (req, res) => {
 router.post('/add-subcategories', (req, res) => {
   let SubCatID = req.session.SubCat
   productHelpers.addSubcategories(req.body, SubCatID).then((id) => {
+    // console.log('ssubb',id)
     if (req.files) {
       let image = req.files.image
       image.mv('./public/sub-category-images/' + id + '.jpg', (err) => {
@@ -212,21 +193,27 @@ router.get('/add-categories', (req, res) => {
 });
 //----------POST-ADD-CATEGORIES----------//
 router.post('/add-categories', (req, res) => {
+  // console.log(req.files.image)
   productHelpers.AddCategories(req.body, (id) => {
-    if (req.image) {
+    console.log(id)
+    if (req.files) {
       let image = req.files.image
       image.mv('./public/category-images/' + id + '.jpg', (err) => {
         if (!err) {
           res.redirect('/admin/add-categories')
+          console.log('success')
         } else {
           console.log(err)
+          console.log('fail',err)
         }
       })
     } else {
+      console.log('not file')
       res.redirect('/admin/add-categories')
     }
   })
 })
+
 //----------GET-ADD-LINK----------//
 router.get('/add-link/:id', (req, res) => {
   req.session.AddLinkPurposeID = req.params.id
@@ -244,78 +231,72 @@ router.post('/add-link', (req, res) => {
       res.render('admin/add-link', { admin })
     }
   })
+})
 
-// router.get('/subcategoryVIew',(req,res)=>{
-//   res.render('admin/subcategoryVIew',{ admin})
+//  --------------------------------------------------------------------------------
+// | ************************************ADDING************************************ |
+//  --------------------------------------------------------------------------------
 
-// })
 
 
+
+
+//  --------------------------------------------------------------------------------
+// | *************************************VIEW************************************* |
+//  --------------------------------------------------------------------------------
+
+//----------GET-VIEW-SUBCATEGORY----------//
 router.get('/subcategoryVIew/:id', async (req, res) => {
-  console.log('hyyyyyyyyyyyyyy', req.params.id)
   req.session.RedirectPurposeStoreID__DeleteSubCategory = req.params.id
   let subCategories = await productHelpers.getSubCategoryDetails(req.params.id)
-  console.log(subCategories)
   if (subCategories == false) {
-    console.log('false')
     res.render('admin/subcategoryVIew', { admin })
   } else {
     res.render('admin/subcategoryVIew', { admin, subCategories })
   }
-  // res.render('admin/subcategoryVIew',{ admin})
-  // res.render('admin/add-subcategories', { admin})
-
 })
-
-
-  // productHelpers.addLink(req.session.AddLinkPurposeID,req.body).then((response)=>{
-  //   console.log(response)
-  //   res.render('admin/add-link',{admin})
-  // })
-
-})
+//----------POST-VIEW-SUBCATEGORY----------//
 router.get('/view-link/:id', async (req, res) => {
-  console.log(req.params.id)
   req.session.RedirectPurposeStoreID__DeleteLink = req.params.id
   req.session.ViewLinkPurposeID = req.params.id
   let result = await productHelpers.ViewLinks(req.session.ViewLinkPurposeID)
   if (result == false) {
-    console.log('false')
     res.render('admin/view-link', { admin })
   } else {
     res.render('admin/view-link', { admin, result })
   }
 })
 
-
-
+//  --------------------------------------------------------------------------------
+// | *************************************VIEW************************************* |
+//  --------------------------------------------------------------------------------
 
 
 
 
 
 //----------GET-LOGIN----------//
-// router.get('/login', (req, res) => {
-//   if (req.session.adminLoggedIn) {
-//     res.redirect("/admin", { admin });
-//   } else {
-//     res.render("admin/login", { adminLogErr: req.session.adminLogErr });
-//     req.session.adminLogErr = false;
-//   }
-// })
+router.get('/login', (req, res) => {
+  if (req.session.adminLoggedIn) {
+    res.redirect("/admin", { admin });
+  } else {
+    res.render("admin/login", { adminLogErr: req.session.adminLogErr });
+    req.session.adminLogErr = false;
+  }
+})
 // //----------POST-LOGIN----------//
-// router.post('/login', (req, res) => {
-//   productHelpers.doLogin(req.body).then((response) => {
-//     if (response.status) {
-//       req.session.admin = response.admin;
-//       req.session.adminLoggedIn = true;
-//       res.redirect("/admin");
-//     } else {
-//       req.session.adminLogErr = "Invalid Password or Username";
-//       res.redirect("/admin/login");
-//     }
-//   })
-// })
+router.post('/login', (req, res) => {
+  productHelpers.doLogin(req.body).then((response) => {
+    if (response.status) {
+      req.session.admin = response.admin;
+      req.session.adminLoggedIn = true;
+      res.redirect("/admin");
+    } else {
+      req.session.adminLogErr = "Invalid Password or Username";
+      res.redirect("/admin/login");
+    }
+  })
+})
 // //----------LOG-OUT----------//
 // router.get('/logout', (req, res) => {
 //   req.session.admin = null

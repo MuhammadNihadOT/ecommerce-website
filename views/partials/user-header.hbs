@@ -40,7 +40,103 @@
 
 
 <header style="padding-bottom: 3.5rem;">
-    <nav class="navbar navbar-expand-sm navbar-light bg-light" style=" position:  fixed;top:0px;width: 100%;z-index: 50;  box-shadow: 0px 0px 7px 1px #9d9d9d;">
+    <nav class="navbar navbar-expand-md navbar-light bg-light" style=" position:  fixed;top:0px;width: 100%;z-index: 50;  box-shadow: 0px 0px 7px 1px #9d9d9d;">
+      <div class="nav-logo">
+        <div>
+          <a style="    padding-left: 19px;;" class="navbar-brand" href="/" >AHLBYT</a>
+      
+        </div>
+        {{!-- <div class="account-space">
+          
+            <a style="      " class="navbar-brand btn account-space-l"  href="">Log In</a>
+            <a style="" class="navbar-brand btn btn-primary account-space-r"  href="">Sign Up</a>
+          
+        </div> --}}
+      </div>
+      <button style="border: none;" class="navbar-toggler nav-button" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="nav navbar-nav ml-auto" style="text-align: center;">
+          <li class="nav-item ">
+            <a class="nav-link" style="font-size: 15px;" href="#">HOME <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="font-size: 15px;" href="#">ABOUT US</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="font-size: 15px;" href="#">CONTACT ME</a>
+          </li>
+          {{#if user}}
+          <li class="nav-item">
+            <div>
+{{!--               
+              <div>
+                <span><sup>Welcome</sup></span>
+              </div> --}}
+              {{!-- <div> --}}
+                <a class="nav-link n" style="font-size: 15px;" href="#">{{user.name}}</a>
+              {{!-- </div> --}}
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="font-size: 15px;" href="/logout">LOGOUT</a>
+          </li>
+            {{else}}
+              {{!-- <li class="nav-item">
+            <a class="nav-link" style="font-size: 15px;" href="/login">SIGNUP</a>
+          </li> --}}
+          <li>
+            <div class="account-space">
+              <a style="" class="navbar-brand btn account-space-l"  href="/login">Log In</a>
+              <a style="" class="navbar-brand btn btn-primary account-space-r"  href="/signup">Sign Up</a>
+            </div>
+          </li>
+          {{/if}}
+            
+        </ul>
+      </div>
+    </nav>
+</header>
+<style>
+  .nav-log{
+    display: flex;
+    /* background-color: aqua; */
+    width: 79%;
+    align-items: center;
+    justify-content: space-between;
+    align-content: center;
+  }
+  .account-space-l{
+        margin-left: 10px;
+        margin-right: 0px;
+    color: black;
+    font-size: 16px;
+    border: 1px solid #bbb5b5;
+    font-size: 14px;
+  }
+  .account-space-r
+  {
+        color: white!important;
+    font-size: 16px;
+    margin-right: 0px;
+  }
+  .n{
+        border-radius: 7px;
+            border: 1px solid #d7cfcf;
+    margin: 0px 3px;
+    font-size: 15px;
+    /* background-color: #edebeb; */
+    color: #646161;
+    
+  }
+
+
+</style>
+
+{{!-- 
+<header style="padding-bottom: 3.5rem;">
+    <nav class="navbar navbar-expand-md navbar-light bg-light" style=" position:  fixed;top:0px;width: 100%;z-index: 50;  box-shadow: 0px 0px 7px 1px #9d9d9d;">
       <a style="    padding-left: 19px;" class="navbar-brand" href="/">AHLBYT</a>
       <button style="border: none;" class="navbar-toggler nav-button" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -71,4 +167,4 @@
         </ul>
       </div>
     </nav>
-</header>
+</header> --}}

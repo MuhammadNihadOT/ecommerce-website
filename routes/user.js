@@ -90,6 +90,7 @@ router.get('/subcategories/:id/:name',(req,res)=>{
    req.session.name = name
   // console.log('httttt',req.session.name)
   userHelpers.getSubCategory(req.params.id).then((SubCat)=>{
+    //  let SubCa = SubCat[0]
     console.log(SubCat)
     res.render('user/subcategories',{user_header,SubCat,name:req.session.name})
   })

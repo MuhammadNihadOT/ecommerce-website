@@ -98,28 +98,40 @@ module.exports = {
   },
   getSubCategory: (CateId) => {
     return new Promise(async (resolve, reject) => {
-      let result =await db.get().collection(collection.SUBCATEGORY_COLLECTION).aggregate([
-        { $match: { category: objectId(CateId) } },
-        {
-          $lookup: {
-            from: collection.CATEGORY_COLLECTION,
-            localField: 'category',
-            foreignField: '_id',
-            as: 'category'
-          }
-        },
-        {
-          $unwind: '$category'
-        },
+      let result =await db.get().collection(collection.SUBCATEGORY_COLLECTION).find({category: objectId(CateId)}).toArray()
+      // let resultLink = await db.get().collection(collection.LINK_COLLECTION).findOne({category:objectId(CateId)})
+      // .aggregate([
+
+ 
+      //   { $match: { category: objectId(CateId) } },
+      //   {
+      //     $lookup: {
+      //       from: collection.LINK_COLLECTION,
+      //       localField: 'category',
+      //       foreignField: 'category',
+      //       as: 'category'
+      //     }
+      //   },
+      //   {
+      //     $unwind: '$category'
+      //   },
         // {
         //   // {
         //     collation:{locale:"en"}
           // }
         // },
-        {
-          $sort: {"name": 1}
-        },
-      ]).toArray()
+        // {
+        //   $sort: {"name": 1}
+        // },
+      // ])
+    //  
+      // console.log(resultLink)
+      console.log(result)
+
+      // let obj = {
+      //   name:result.name
+      // }
+      // console.log(obj)
       resolve(result)
     })
   },

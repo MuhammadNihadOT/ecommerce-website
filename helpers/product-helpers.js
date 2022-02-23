@@ -102,9 +102,11 @@ module.exports = {
         console.log('server',CatID)
         let obj ={
             name:data.name,
+            link:data.link,
             description:data.description,
             category: objectId(CatID)
         }
+        
         // console.log(obj)
         return new Promise(async (resolve, reject) => {
             console.log(obj)
@@ -255,6 +257,7 @@ module.exports = {
                 $set: {
                     name: data.name,
                     description: data.description,
+                    link:data.link
                     // price: proDetails.price,
                     // category: proDetails.category
                 }
