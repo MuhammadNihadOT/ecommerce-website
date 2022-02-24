@@ -1,5 +1,6 @@
 const { response, json } = require('express');
 var express = require('express');
+var {Auth} = require("two-step-auth")
 const productHelpers = require('../helpers/product-helpers');
 var router = express.Router();
 
@@ -328,11 +329,34 @@ router.get('/edit-profile',verifyLogin,(req,res)=>{
     res.render('admin/edit-profile',{admin,data,Admin})
   })
 })
-router.post('/edit-profile',(req,res)=>{
+router.post('/edit-profile',async(req,res)=>{
   let Admin = req.session.admin._id
-  productHelpers.updateProfile(req.body,Admin).then(()=>{
-    res.redirect('/admin/edit-profile')
-  })
+  // productHelpers.updateProfile(req.body,Admin).then(()=>{
+    // res.redirect('/admin/edit-profile')
+
+  console.log(req.body)
+
+
+      
+  try {
+    const resForLogin = await Auth(req.body.email,'nihad');
+    
+    console.log(resForLogin);
+    console.log('mail',resForLogin.mail);
+    console.log('otp',resForLogin.OTP);
+    console.log('status',resForLogin.success);
+    let UserEmail = req.session.userEmail = req.body.email;
+    let USER_OTP = req.session.USER_OTP = resForLogin.OTP
+    console.log('NEW OTP US :',USER_OTP)
+    console.log('email',UserEmail)
+    res.render('user/verify-otp')
+} catch (error) {
+    console.log(error)
+}
+
+
+
+  // })
 })
 // //----------ORDERS----------//
 // router.get('/orders/:id',verifyLogin, (req, res) => {
