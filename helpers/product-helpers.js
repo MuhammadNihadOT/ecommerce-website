@@ -266,6 +266,92 @@ module.exports = {
             })
         })
     },
+    doSignup: (userData) => {
+
+        // console.log(userData)
+    
+        return new Promise(async (resolve, reject) => {
+    
+    
+    
+        //   var today = new Date();
+    
+        //   var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+    
+        //   var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    
+        //   var dateTime = date + ' ' + time;
+    
+    
+          let objData = {
+            // name: userData.name,
+            email: userData.email,
+            // date: dateTime,
+            password: userData.password
+          }
+          // console.log(objData.email)
+        //   db.get().collection(collection.USER_COLLECTION).findOne({ email: objData.email }).then(async(response) => {
+            // console.log(response.email)
+            // if (response == null) {
+              objData.password = await bcrypt.hash(objData.password, 10);
+              db.get().collection(collection.ADMIN_COLLECTION).insertOne(objData).then((data) => {
+                // let proID = data.insertedId;
+                // db.get().collection(collection.USER_COLLECTION).findOne({ _id: objectId(proID) }).then((user) => {
+                //   response ={
+                //     user:user,
+                //     login:true
+                //   }
+    
+                //   resolve(response);
+                // });
+              });
+            // } else {
+            //   console.log('email is already registerded')
+            //   resolve({login:false})
+            // }
+        //   })
+    
+        });
+      },
+      getAdminData:(id)=>{
+          return new Promise((resolve,reject)=>{
+            db.get().collection(collection.ADMIN_COLLECTION).findOne({_id : objectId(id)}).then((response)=>{
+                // console.log(response)res
+                resolve(response)
+            })
+          })
+      },
+      updateProfile:(data,id)=>{
+        //   if(data.password){
+        //     console.log('password has')
+        //   }
+          return new Promise((resolve,reject)=>{
+            db.get().collection(collection.ADMIN_COLLECTION).updateOne({ _id: objectId(id) }, {
+                $set: {
+                    email: data.email,
+                    // description: CategoryDetails.description,
+                    // price: proDetails.price,
+                    // category: proDetails.category
+                }
+            }).then((response) => {
+                resolve(response)
+                // console.log(response)
+            })
+          })
+      },
+      
+
+
+
+
+
+
+
+
+
+
+
+    
     // let users = await db.get().collection(collection.USER_COLLECTION).find().toArray()
     // resolve(users)
     // getUserOrders: (userId) => {

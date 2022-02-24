@@ -8,13 +8,13 @@ var router = express.Router();
 //----------SET-VARIABLE----------//
 var admin = true;
 //----------LOGIN-CHECK----------//
-// const verifyLogin = (req, res, next) => {
-//   if (req.session.adminLoggedIn) {
-//     next();
-//   } else {
-//     res.redirect("/admin/login");
-//   }
-// };
+const verifyLogin = (req, res, next) => {
+  if (req.session.adminLoggedIn) {
+    next();
+  } else {
+    res.redirect("/admin/login");
+  }
+};
 
 
 
@@ -25,9 +25,10 @@ var admin = true;
 //  --------------------------------------------------------------------------------
 
 //----------HOME-PAGE----------//
-router.get('/', function (req, res, next) {
+router.get('/',verifyLogin, function (req, res, next) {
   productHelpers.getAllCategories().then((Categories) => {
-    res.render('admin/view-categories', { admin, Categories });
+    let Admin = req.session.admin
+    res.render('admin/view-categories', { admin, Categories,Admin });
   })
 });
 
@@ -44,9 +45,10 @@ router.get('/', function (req, res, next) {
 //  --------------------------------------------------------------------------------
 
 //----------ALL-USERS----------//
-router.get('/all-users', (req, res) => {
+router.get('/all-users',verifyLogin, (req, res) => {
   productHelpers.getUserDetails().then((userData) => {
-    res.render('admin/all-users', { admin, userData })
+    let Admin = req.session.admin
+    res.render('admin/all-users', { admin, userData,Admin })
   })
 })
 
@@ -102,7 +104,8 @@ router.get('/delete-link/:id', (req, res) => {
 //----------GET-EDIT-CATEGORY----------//
 router.get('/edit-category/:id', async (req, res) => {
   let category = await productHelpers.getCategoryDetails(req.params.id)
-  res.render('admin/edit-category', { category, admin })
+  let Admin = req.session.admin
+  res.render('admin/edit-category', { category, admin ,Admin})
 })
 //----------POST-EDIT-CATEGORY----------//
 router.post('/edit-category/:id', (req, res) => {
@@ -123,19 +126,22 @@ router.post('/edit-category/:id', (req, res) => {
 router.get('/edit-link/:id', async (req, res) => {
   let value = await productHelpers.getLink(req.params)
   value = value[0]
-  res.render('admin/edit-link', { admin, value })
+  let Admin = req.session.admin
+  res.render('admin/edit-link', { admin, value,Admin })
 })
 //----------POST-EDIT-LINK----------//
 router.post('/edit-link/:id', (req, res) => {
   productHelpers.updateLink(req.params.id, req.body).then((response) => {
-    res.render('admin/edit-link', { admin, response })
+    let Admin = req.session.admin
+    res.render('admin/edit-link', { admin, response,Admin })
   })
 })
 //----------GET-EDIT-SUBCATEGORY----------//
 router.get('/edit-subcategory/:id', (req, res) => {
   let id = req.session.RedirectPurposeStoreID__EditSubCategory = req.params.id
   productHelpers.getSubcategory(req.params.id).then((response) => {
-    res.render('admin/edit-subcategory', { admin, response })
+    let Admin = req.session.admin
+    res.render('admin/edit-subcategory', { admin, response,Admin })
   })
 })
 //----------POST-EDIT-SUBCATEGORY----------//
@@ -166,30 +172,33 @@ router.post('/edit-subcategory/:id', (req, res) => {
 //----------GET-ADD-SUBCATEGORIES----------//
 router.get('/add-subcategories/:id', (req, res) => {
   req.session.SubCat = req.params.id
-  res.render('admin/add-subcategories', { admin })
+  let Admin = req.session.admin
+  res.render('admin/add-subcategories', { admin,Admin })
 })
 //----------POST-ADD-SUBCATEGORIES----------//
 router.post('/add-subcategories', (req, res) => {
   let SubCatID = req.session.SubCat
   productHelpers.addSubcategories(req.body, SubCatID).then((id) => {
     // console.log('ssubb',id)
+    let Admin = req.session.admin
     if (req.files) {
       let image = req.files.image
       image.mv('./public/sub-category-images/' + id + '.jpg', (err) => {
         if (!err) {
-          res.render('admin/add-subcategories', { admin })
+          res.render('admin/add-subcategories', { admin, Admin })
         } else {
           console.log(err)
         }
       })
     } else {
-      res.render('admin/add-subcategories', { admin })
+      res.render('admin/add-subcategories', { admin ,Admin})
     }
   })
 })
 //----------GET-ADD-CATEGORIES----------//
 router.get('/add-categories', (req, res) => {
-  res.render('admin/add-categories', { admin })
+  let Admin = req.session.admin
+  res.render('admin/add-categories', { admin,Admin })
 });
 //----------POST-ADD-CATEGORIES----------//
 router.post('/add-categories', (req, res) => {
@@ -217,18 +226,20 @@ router.post('/add-categories', (req, res) => {
 //----------GET-ADD-LINK----------//
 router.get('/add-link/:id', (req, res) => {
   req.session.AddLinkPurposeID = req.params.id
-  res.render('admin/add-link', { admin })
+  let Admin = req.session.admin
+  res.render('admin/add-link', { admin,Admin })
 })
 //----------POST-ADD-LINK----------//
 router.post('/add-link', (req, res) => {
   let IDforCat_AtatchLink = req.session.RedirectPurposeStoreID__DeleteSubCategory
   productHelpers.checkHasLink(req.session.AddLinkPurposeID, req.body, IDforCat_AtatchLink).then((response) => {
+    let Admin = req.session.admin
     if (response === false) {
       let LinkError = req.session.LinkError = 'Link ia already available'
-      res.render('admin/add-link', { admin, LinkError })
+      res.render('admin/add-link', { admin, LinkError,Admin })
       LinkError = req.session.LinkError = null
     } else {
-      res.render('admin/add-link', { admin })
+      res.render('admin/add-link', { admin,Admin })
     }
   })
 })
@@ -249,10 +260,11 @@ router.post('/add-link', (req, res) => {
 router.get('/subcategoryVIew/:id', async (req, res) => {
   req.session.RedirectPurposeStoreID__DeleteSubCategory = req.params.id
   let subCategories = await productHelpers.getSubCategoryDetails(req.params.id)
+  let Admin = req.session.admin
   if (subCategories == false) {
-    res.render('admin/subcategoryVIew', { admin })
+    res.render('admin/subcategoryVIew', { admin,Admin })
   } else {
-    res.render('admin/subcategoryVIew', { admin, subCategories })
+    res.render('admin/subcategoryVIew', { admin, subCategories,Admin })
   }
 })
 //----------POST-VIEW-SUBCATEGORY----------//
@@ -260,10 +272,11 @@ router.get('/view-link/:id', async (req, res) => {
   req.session.RedirectPurposeStoreID__DeleteLink = req.params.id
   req.session.ViewLinkPurposeID = req.params.id
   let result = await productHelpers.ViewLinks(req.session.ViewLinkPurposeID)
+  let Admin = req.session.admin
   if (result == false) {
-    res.render('admin/view-link', { admin })
+    res.render('admin/view-link', { admin,Admin })
   } else {
-    res.render('admin/view-link', { admin, result })
+    res.render('admin/view-link', { admin, result,Admin })
   }
 })
 
@@ -290,6 +303,7 @@ router.post('/login', (req, res) => {
     if (response.status) {
       req.session.admin = response.admin;
       req.session.adminLoggedIn = true;
+      // let Admin = req.session.admin
       res.redirect("/admin");
     } else {
       req.session.adminLogErr = "Invalid Password or Username";
@@ -298,11 +312,28 @@ router.post('/login', (req, res) => {
   })
 })
 // //----------LOG-OUT----------//
-// router.get('/logout', (req, res) => {
-//   req.session.admin = null
-//   req.session.adminLoggedIn = null;
-//   res.redirect("/admin/login");
-// })
+router.get('/logout', (req, res) => {
+  req.session.admin = null
+  req.session.adminLoggedIn = null;
+  res.redirect("/admin/login");
+})
+
+
+
+router.get('/edit-profile',verifyLogin,(req,res)=>{
+  console.log('admin:',req.session.admin)
+  let Admin = req.session.admin
+  productHelpers.getAdminData(req.session.admin._id).then((data)=>{
+
+    res.render('admin/edit-profile',{admin,data,Admin})
+  })
+})
+router.post('/edit-profile',(req,res)=>{
+  let Admin = req.session.admin._id
+  productHelpers.updateProfile(req.body,Admin).then(()=>{
+    res.redirect('/admin/edit-profile')
+  })
+})
 // //----------ORDERS----------//
 // router.get('/orders/:id',verifyLogin, (req, res) => {
 //   console.log(req.params.id)
