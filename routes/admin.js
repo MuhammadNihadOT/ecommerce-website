@@ -346,10 +346,10 @@ router.post('/edit-profile',async(req,res)=>{
     console.log('mail',resForLogin.mail);
     console.log('otp',resForLogin.OTP);
     console.log('status',resForLogin.success);
-    // let UserEmail = req.session.userEmail = req.body.email;
-    // let USER_OTP = req.session.USER_OTP = resForLogin.OTP
-    // console.log('NEW OTP US :',USER_OTP)
-    // console.log('email',UserEmail)
+    let UserEmail = req.session.userEmail = req.body.email;
+    let USER_OTP = req.session.USER_OTP = resForLogin.OTP
+    console.log('NEW OTP US :',USER_OTP)
+    console.log('email',UserEmail)
     res.render(`${admin_router}/verify-otp`)
 } catch (error) {
     console.log(error)
@@ -358,6 +358,36 @@ router.post('/edit-profile',async(req,res)=>{
 
 
   // })
+})
+
+
+
+
+
+router.post('/verifying',(req,res)=>{
+  console.log(req.body.FirstDigit)
+  let USER_OTP = req.session.USER_OTP
+
+  var NUM = req.body.FirstDigit+req.body.SecondDigit+req.body.ThirdDigit+req.body.FourthDigit+req.body.FifthDigit +req.body.SixthDigit+''
+  console.log(''+NUM)
+  parseInt(`${NUM}`)
+  console.log('new number is',NUM)
+
+  console.log('verifying',USER_OTP)
+  console.log(req.body)
+//  && req.body.SecondDigit  && req.body.ThirdDigit &&req.body.FourthDigit && req.body.FifthDigit &&req.body.SixthDigit 
+  if(NUM == USER_OTP){
+    console.log('login success')
+    res.redirect("/");
+    
+
+  }else{
+    console.log('login error')
+    let OTP_ERROR = 'Incorrect verification code provided.'
+    req.session.OTP_ERROR = OTP_ERROR
+    res.render('user/verify-otp',{OTP_ERROR:req.session.OTP_ERROR})
+  }
+
 })
 // //----------ORDERS----------//
 // router.get('/orders/:id',verifyLogin, (req, res) => {

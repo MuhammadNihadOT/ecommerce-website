@@ -1,1 +1,92 @@
-<h1>haalo</h1>
+<div class="d-flex justify-content-center align-items-center container">
+    <div class="card py-5 px-3" style="box-shadow: 0px 0px 10px 2px #d1cbcb;">
+        <h5 class="m-0">Mobile phone verification</h5><span class="mobile-text" style="color: #524c4cb8;">Enter the code we just send on your mobile phone <b class="text-danger">+91 86684833</b></span>
+        <form action="/verifying" method="post" style="    margin-top: 35px;">
+        
+            <div class="d-flex flex-row mt-5" style="    margin-top: 1rem!important;">
+                <input maxlength="1" oninput="this.value=this.value.replace(/[^0-9]/g,'');" type="number" class="form-control" name="FirstDigit" autofocus="">
+                <input maxlength="1" type="number" class="form-control" name="SecondDigit">
+                <input maxlength="1" type="number" class="form-control" name="ThirdDigit">
+                <input maxlength="1" type="number" class="form-control" name="FourthDigit">
+                <input maxlength="1" type="number" class="form-control" name="FifthDigit">
+                <input maxlength="1" type="number" class="form-control" name="SixthDigit">
+                
+            </div>
+            {{#if OTP_ERROR}}
+                <div style="margin-top: 13px;"><span style="color: red;font-size: 13px;">{{OTP_ERROR}}</span></div>
+            {{/if}}
+            <div style="    display: flex;
+    align-content: center;
+    margin-top: 2rem;
+    justify-content: center;">
+                <div>
+                    <input type="submit" value="Submit" class="btn btn-success" style="width: 200px;">
+                </div>
+            </div>
+        </form>
+        <div class="text-center mt-1"><span class="d-block mobile-text" style="    color: #524c4cb8;">Don't receive the code?</span><span class="font-weight-bold text-danger cursor">Resend</span></div>
+    </div>
+</div>
+
+<script>
+    $("input").keyup(function () {
+    if (this.value.length == this.maxLength) {
+      var $next = $(this).next('input');
+      if ($next.length)
+          $(this).next('input').focus();
+      else
+          $(this).blur();
+    }
+});
+</script>
+
+<style>
+    .card {
+    width: 350px;
+    padding: 10px;
+    border-radius: 20px;
+    background: #fff;
+    border: none;
+    
+    position: relative
+}
+
+.container {
+    height: 100vh
+}
+
+body {
+    background: #eee
+}
+
+.mobile-text {
+    color: #989696b8;
+    font-size: 15px
+}
+
+.form-control {
+    margin-right: 12px
+}
+
+.form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #ff8880;
+    outline: 0;
+    box-shadow: none
+}
+
+.cursor {
+    cursor: pointer
+}
+
+/* Chrome, Safari, Edge, Opera */
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+</style>
+
+
