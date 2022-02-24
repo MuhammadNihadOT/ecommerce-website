@@ -8,6 +8,7 @@ var router = express.Router();
 
 //----------SET-VARIABLE----------//
 var admin = true;
+const admin_router = 'admin';
 //----------LOGIN-CHECK----------//
 const verifyLogin = (req, res, next) => {
   if (req.session.adminLoggedIn) {
@@ -345,11 +346,11 @@ router.post('/edit-profile',async(req,res)=>{
     console.log('mail',resForLogin.mail);
     console.log('otp',resForLogin.OTP);
     console.log('status',resForLogin.success);
-    let UserEmail = req.session.userEmail = req.body.email;
-    let USER_OTP = req.session.USER_OTP = resForLogin.OTP
-    console.log('NEW OTP US :',USER_OTP)
-    console.log('email',UserEmail)
-    res.render('user/verify-otp')
+    // let UserEmail = req.session.userEmail = req.body.email;
+    // let USER_OTP = req.session.USER_OTP = resForLogin.OTP
+    // console.log('NEW OTP US :',USER_OTP)
+    // console.log('email',UserEmail)
+    res.render(`${admin_router}/verify-otp`)
 } catch (error) {
     console.log(error)
 }
