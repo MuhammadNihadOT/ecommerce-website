@@ -2,6 +2,7 @@
 
 <section>
   <div class="container">
+    {{#if subCategories}}
     <div class="row mt-4 mb-4">
     </div>
     <table class="table mt-4" id="y">
@@ -47,6 +48,9 @@
       </tbody>
     </table>
   </div>
+  {{else}}
+        <h3 class="pt-5">No data available!</h3>
+    {{/if}}
 </section>
 <script>
   $(document).ready(function () {

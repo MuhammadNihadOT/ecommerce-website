@@ -322,13 +322,33 @@ module.exports = {
           })
       },
       updateProfile:(data,id)=>{
-        //   if(data.password){
-        //     console.log('password has')
-        //   }
-          return new Promise((resolve,reject)=>{
+        //  let data
+          return new Promise(async(resolve,reject)=>{
+            if(data.password){
+                let obj={
+                    password:data.password,
+                    email:data.email
+                }
+                console.log('password has')
+                obj.password = await bcrypt.hash(obj.password, 10);
+                db.get().collection(collection.ADMIN_COLLECTION).updateOne({ _id: objectId(id) }, {
+                    $set: {
+                        email: obj.email,
+                        password:obj.password
+                        // description: CategoryDetails.description,
+                        // price: proDetails.price,
+                        // category: proDetails.category
+                    }
+                }).then((response) => {
+                    resolve(response)
+                    // console.log(response)
+                })
+              }
+
             db.get().collection(collection.ADMIN_COLLECTION).updateOne({ _id: objectId(id) }, {
                 $set: {
                     email: data.email,
+                    
                     // description: CategoryDetails.description,
                     // price: proDetails.price,
                     // category: proDetails.category
@@ -339,7 +359,41 @@ module.exports = {
             })
           })
       },
-      
+      FoundEmail:(data)=>{
+          return new Promise(async(resolve,reject)=>{
+            let result =await db.get().collection(collection.ADMIN_COLLECTION).findOne({email:data.email})
+        //     let length = result.length
+            if(result !== null){
+                console.log('email und')
+                resolve({status:true})
+            }
+            else{
+                console.log('email not found!!')
+                resolve({status:false})
+            }
+            // console.log(result)
+          })
+      },
+      ForgotPassword:(data,email)=>{
+        return new Promise(async(resolve,reject)=>{
+            let obj = {
+                password:data.password
+            }
+            obj.password = await bcrypt.hash(obj.password, 10);
+            db.get().collection(collection.ADMIN_COLLECTION).updateOne({ email:email}, {
+                $set: {
+                    password: obj.password,
+                    
+                    // description: CategoryDetails.description,
+                    // price: proDetails.price,
+                    // category: proDetails.category
+                }
+            }).then((response) => {
+                resolve(response)
+                // console.log(response)
+            })
+        })
+      },
 
 
 

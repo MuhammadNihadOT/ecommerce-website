@@ -330,27 +330,32 @@ router.get('/edit-profile',verifyLogin,(req,res)=>{
     res.render('admin/edit-profile',{admin,data,Admin})
   })
 })
-router.post('/edit-profile',async(req,res)=>{
-  let Admin = req.session.admin._id
+router.post('/edit-profile',verifyLogin,async(req,res)=>{
+  
   // productHelpers.updateProfile(req.body,Admin).then(()=>{
     // res.redirect('/admin/edit-profile')
-
-  console.log(req.body)
+    let value = req.body
+    let email = req.body.email
+console.log(value)
+let v = req.session.value = value
+  console.log('emaillllllll',v)
+  // req.session.EditProfile = req.body
 
 
       
   try {
-    const resForLogin = await Auth(req.body.email,'nihad');
+    const resForLogin = await Auth(req.body.email,'for otp testing purpose !!');
     
-    console.log(resForLogin);
-    console.log('mail',resForLogin.mail);
+    // console.log(resForLogin);
+    // console.log('mail',resForLogin.mail);
     console.log('otp',resForLogin.OTP);
-    console.log('status',resForLogin.success);
+    // console.log('status',resForLogin.success);
     let UserEmail = req.session.userEmail = req.body.email;
     let USER_OTP = req.session.USER_OTP = resForLogin.OTP
-    console.log('NEW OTP US :',USER_OTP)
-    console.log('email',UserEmail)
-    res.render(`${admin_router}/verify-otp`)
+    // console.log('NEW OTP US :',USER_OTP)
+    // console.log('email',UserEmail)
+    // let email = 
+    res.render(`${admin_router}/verify-otp`,{email})
 } catch (error) {
     console.log(error)
 }
@@ -364,10 +369,13 @@ router.post('/edit-profile',async(req,res)=>{
 
 
 
-router.post('/verifying',(req,res)=>{
-  console.log(req.body.FirstDigit)
+router.post('/verifying',verifyLogin,(req,res)=>{
+  // console.log(req.body.FirstDigit)
   let USER_OTP = req.session.USER_OTP
-
+  // let EDIT_PRO = req.session.EditProfile
+  let v = req.session.value
+  console.log('emaill:',v)
+  console.log('emaill:',v.email)
   var NUM = req.body.FirstDigit+req.body.SecondDigit+req.body.ThirdDigit+req.body.FourthDigit+req.body.FifthDigit +req.body.SixthDigit+''
   console.log(''+NUM)
   parseInt(`${NUM}`)
@@ -377,40 +385,101 @@ router.post('/verifying',(req,res)=>{
   console.log(req.body)
 //  && req.body.SecondDigit  && req.body.ThirdDigit &&req.body.FourthDigit && req.body.FifthDigit &&req.body.SixthDigit 
   if(NUM == USER_OTP){
-    console.log('login success')
-    res.redirect("/");
-    
+    // console.log('login success')
+     
+    // res.redirect("/admin/");
+    let Admin = req.session.admin._id
+     productHelpers.updateProfile(v,Admin).then(()=>{
+    res.redirect('/admin/edit-profile')
+     })
 
   }else{
     console.log('login error')
     let OTP_ERROR = 'Incorrect verification code provided.'
     req.session.OTP_ERROR = OTP_ERROR
-    res.render('user/verify-otp',{OTP_ERROR:req.session.OTP_ERROR})
+    res.render('admin/verify-otp',{OTP_ERROR:req.session.OTP_ERROR})
   }
 
 })
 // //----------ORDERS----------//
-// router.get('/orders/:id',verifyLogin, (req, res) => {
-//   console.log(req.params.id)
-//   productHelpers.getUserOrders(req.params.id).then((orders) => {
-//     res.render('admin/orders', { orders, admin })
-//   })
-// })
+router.get('/forgot-password', (req, res) => {
+  // console.log(req.params.id)
+  // productHelpers.getUserOrders(req.params.id).then((orders) => {
+    res.render('admin/forgot-password')
+  // })
+})
 // //----------CHANGE-TO-SHIPPED----------//
-// router.get('/change-to-shipping/:id', (req, res) => {
-//   productHelpers.getShipping(req.params.id).then((orders) => {
-//     res.json({ status: true })
-//   })
-// })
-// //----------SHIPPED----------//
-// router.get('/shipped/:id', async (req, res) => {
-//   let shipped = await productHelpers.getUserShippedOrders(req.params.id)
-//   res.render('admin/shipped', { admin, shipped })
-// })
+router.post('/forgot-password', (req, res) => {
+  productHelpers.FoundEmail(req.body).then(async(response) => {
+    // res.json({ status: true })
+    let email = req.body.email
+    let ForgetPassEmail = req.session.ForgetPassEmail = email
+    if(response.status == true){
 
-// router.get('/add-banners',(req,res)=>{
-//   res.render('admin/add-banners',{admin})
-// })
+      try {
+        const resForLogin = await Auth(req.body.email,'AHLBYT !!');
+        
+        // console.log(resForLogin);
+        // console.log('mail',resForLogin.mail);
+        console.log('otp',resForLogin.OTP);
+        // console.log('status',resForLogin.success);
+        // let UserEmail = req.session.userEmail = req.body.email;
+        let USER_OTP = req.session.ADMIN_FORGOT_PASSWORD_OTP = resForLogin.OTP
+        // console.log('NEW OTP US :',USER_OTP)
+        // console.log('email',UserEmail)
+        // let email = 
+        res.render(`${admin_router}/verifyOtp-ForgetPass`,{email})
+    } catch (error) {
+        console.log(error)
+    }
+    
+    }else{
+      res.render('admin/forgot-password',{EmailErrorForForget:'Email not found!'})
+    }
+  })
+})
+// //----------SHIPPED----------//
+router.post('/verifyOtp-ForgetPass', async (req, res) => {
+  let USER_OTP = req.session.ADMIN_FORGOT_PASSWORD_OTP
+  // let shipped = await productHelpers.getUserShippedOrders(req.params.id)
+  // res.render('admin/shipped', { admin, shipped })
+  // let v = req.session.value
+  console.log('emaill:')
+  // console.log('emaill:',v.email)
+  var NUM = req.body.FirstDigit+req.body.SecondDigit+req.body.ThirdDigit+req.body.FourthDigit+req.body.FifthDigit +req.body.SixthDigit+''
+  console.log(''+NUM)
+  parseInt(`${NUM}`)
+  // console.log('new number is',NUM)
+
+  console.log('verifying',USER_OTP)
+  // console.log(req.body)
+//  && req.body.SecondDigit  && req.body.ThirdDigit &&req.body.FourthDigit && req.body.FifthDigit &&req.body.SixthDigit 
+  if(NUM == USER_OTP){
+    console.log('login success')
+     
+    // res.redirect("/admin/");
+    // let Admin = req.session.admin._id
+    //  productHelpers.updateProfile(v,Admin).then(()=>{
+    res.render('admin/forgotPassword')
+    //  })
+
+  }else{
+    // console.log('login error')
+    let OTP_ERROR = 'Incorrect verification code provided.'
+    req.session.OTP_ERROR = OTP_ERROR
+    res.render('admin/verify-otp',{OTP_ERROR:req.session.OTP_ERROR})
+  }
+
+})
+
+router.post('/forgotPass',(req,res)=>{
+  let ForgetPassEmail = req.session.ForgetPassEmail
+  productHelpers.ForgotPassword(req.body,ForgetPassEmail).then((response)=>{
+    
+    res.render('admin/login')
+  })
+  // res.render('admin/add-banners',{admin})
+})
 
 // router.post('/add-banners',(req,res)=>{
 //   console.log(req.body)
