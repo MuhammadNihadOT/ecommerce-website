@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-center align-items-center container">
     <div class="card py-5 px-3" style="box-shadow: 0px 0px 10px 2px #d1cbcb;">
         <h5 class="m-0">Email verification</h5><span class="mobile-text" style="color: #524c4cb8;">Enter the code we just send on your email address <b class="text-danger">{{email}}</b></span>
-        <form action="/admin/verifying" method="post" style="    margin-top: 35px;">
+        <form action="/admin/verifyingSignup" method="post" style="    margin-top: 35px;">
         
             <div class="d-flex flex-row mt-5" style="    margin-top: 1rem!important;">
                 <input maxlength="1" oninput="this.value=this.value.replace(/[^0-9]/g,'');" type="number" class="form-control" name="FirstDigit" autofocus="">

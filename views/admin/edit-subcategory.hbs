@@ -1,4 +1,4 @@
-<section>
+<section style="margin-top: 5rem;">
     <div class="container">
         <form action="/admin/edit-subcategory/{{response._id}}" method="POST" enctype="multipart/form-data">
             <div class="row w-50 mt-4">
@@ -9,14 +9,6 @@
                     <label>Name</label>
                     <input type="text" class="form-control" name="name" value="{{response.name}}" />
                 </div>
-                {{!-- <div class="col-12">
-                    <label>Category</label>
-                    <input type="text" class="form-control" name="category" value="{{product.category}}" />
-                </div>
-                <div class="col-12">
-                    <label>Price</label>
-                    <input type="text" class="form-control" name="price" value="{{product.price}}" />
-                </div> --}}
                 <div class="col-12">
                     <label>Description</label>
                     <input type="text" class="form-control" name="description" value="{{response.description}}" />
@@ -26,7 +18,7 @@
                     <img src="/sub-category-images/{{response._id}}.jpg" style="width: 100px;height: auto;    width: 101px; padding-top: 2rem; padding-bottom: 2rem; margin-left: 2rem; height: auto;" id="imgViewSubCat">
                     <input type="file" class="form-control" name="image" onchange="viewImageSubCategory(event)" />
                 </div>
-                   <div class="col-12">
+                <div class="col-12">
                     <label>Link</label>
                     <input type="url" class="form-control" name="link" value="{{response.link}}" />
                 </div>
@@ -37,4 +29,3 @@
         </form>
     </div>
 </section>
-

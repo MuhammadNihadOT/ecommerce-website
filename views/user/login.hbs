@@ -1,260 +1,198 @@
-{{!-- <section class="vh-100">
-        <div class="container-fluid">
-            <div class="row">
-              
-                <div class="col-sm-12 text-black d-flex main-div-style" style="margin-top: 2rem;">
-                  <div>
-                    <a  onclick="Windowless(1)" style="cursor: pointer;">
-                      <i  class="far fa-times-circle" style="font-size: 23px;" ></i>
-                    </a>
-                  
-                </div>
-                    <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 pt-5 pt-xl-0 mt-xl-n5 main-sub1-div-style">
-                      
-                        <form action="/login" method="post" id="LoginForm" style="width: 20rem;">
-                            <div class="text-center" style="padding-top: 2rem;">
-                                <span class="h2 fw-bold mb-0 login-page-top-logo" >
-                                    <i class="fas fa-user-circle" style="font-size: 45px;padding: 10px;"></i>Login</span>
-                            </div>
-                            <div class="form-outline mb-4 divForAccessCssFlex" style="">
-                                <label class="form-label " for="form2Example18" style="position:unset!important;color: black!important;">Email address</label>
-                                <input type="email" class="form-control" name="emailaddr" id="email" required />
-                            </div>
-                            <div class="form-outline divForAccessCssFlex">
-                                <label class="form-label" for="form2Example28" style="position:unset!important;color: black!important;">Password</label>
-                                <input type="password" class="form-control" name="password" id="password" required />
-                            </div>
-                            <div class="row col-12 loginPage-InnerForm-CreateNewAccAndForGetPass" >
-                                <a class="text-muted" style="color: #727a83!important;font-size:14px" href="/signup">Create new account ?</a>
-                                <a class="text-muted loginPage-InnerForm-ForGetPass" href="#!">Forgot password?</a>
-                            </div>
-                            <div class="pt-1 mb-4 text-center loginPage-InnerForm-buttonDiv">
-                                <button class="btn btn-info btn-lg btn-block main-sub1-div-style-form-button" type="submit">Login</button>
-                            </div>
-                        </form>
+<section style="display:flex;justify-content:flex-end;padding-right:25px;padding-top:25px;">
+    <div>
+        <a href="/close" style="text-decoration:none;cursor:pointer;color: black;font-size:20px;">X</a>
+    </div>
+    <div></div>
+</section>
+<section>
+    {{#if EmailError}}
+    <div style="">
+        <div style="padding-right: 11px;text-align: center;color: #fd0000;border: 1px solid #d9d9d9;margin: 20px 0px;padding-top: 15px;">
+            <p>{{EmailError}}</p>
+            {{!-- <p>hyyyyyyy</p> --}}
+        </div>
+    </div>
+    {{/if}}
+</section>
+<section>
+    {{#if LoginError}}
+    <div style="">
+        <div style="padding-right: 11px;text-align: center;color: #fd0000;border: 1px solid #d9d9d9;margin: 20px 0px;padding-top: 15px;">
+            <p>{{LoginError}}</p>
+        </div>
+    </div>
+    {{/if}}
+</section>
+<section class="vh-100">
+    <div class="container-fluid">
+        <div class="row" style="display: flex;justify-content: center;">
+            <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 pt-xl-0 mt-xl-n5 main-sub1-div-style" style="" id="main-div">
+                <form action="/login" method="post" id="LoginForm" style="width: 20rem;">
+                    <div class="text-center logo-padding-bottom">
+                        <span class="h2 fw-bold mb-0 login-page-top-logo">
+                            <i class="fas fa-user-circle" style="font-size: 45px;padding: 10px;"></i>Login</span>
                     </div>
-                </div>
+                    <div class="form-outline mb-4 divForAccessCssFlex" style="">
+                        <label class="form-label " for="form2Example18"
+                            style="position:unset!important;color: black!important;">Email address</label>
+                        <input type="email" class="form-control responsive-for-xm" name="emailaddr" id="email"required />
+                    </div>
+                    <div class="form-outline divForAccessCssFlex">
+                        <label class="form-label" for="form2Example28"
+                            style="position:unset!important;color: black!important;">Password</label>
+                        <input type="password" class="form-control responsive-for-xm" name="password" id="password"required />
+                    </div>
+                    <div class="row col-12 loginPage-InnerForm-CreateNewAccAndForGetPass">
+                        <a class="text-muted" style="color: #727a83!important;font-size:14px" href="/signup">Create newaccount ?</a>
+                        <a class="text-muted loginPage-InnerForm-ForGetPass" href="#!">Forgot password?</a>
+                    </div>
+                    <div class="pt-1 mb-4 text-center loginPage-InnerForm-buttonDiv">
+                        <button class="btn btn-info btn-lg btn-block main-sub1-div-style-form-button" type="submit">Login</button>
+                    </div>
+                </form>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
 <style>
-  label{
-    color: rgb(207 29 29)!important;
-    position: absolute!important;
-    right: 0px!important;
-    font-size: 12px!important;
-    top: 43px!important;
-    padding-right: 7px!important;
-}
-</style>
+    label {
+        color: rgb(207 29 29) !important;
+        position: absolute !important;
+        right: 0px !important;
+        font-size: 12px !important;
+        top: 43px !important;
+        padding-right: 7px !important;
+    }
 
-<script>
-  
-</script>
+    .main-div-style {
+        justify-content: center;
+        align-content: center;
+    }
 
-     --}}
+    .main-sub1-div-style {
+        border: 1px solid #d9d9e1;
+        border-radius: 20px;
+        margin-top: 2rem;
+        margin-bottom: 2.5rem;
+        box-shadow: -5px 0px 70px 3px #d1cccc;
+    }
 
+    .main-sub1-div-style-form-button {
+        width: 45% !important;
+        height: 40px !important;
+        background-color: #2f893e !important;
+        font-size: 18px !important;
+        display: flex !important;
+        border: none !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
 
+    .main-sub1-div-style-redirect-login {
+        display: flex;
+        justify-content: center;
+        padding-bottom: 1rem;
+    }
 
+    .divForAccessCssFlex {
+        position: relative !important;
+    }
 
+    .anim-effect {
+        position: absolute !important;
+        top: 10px !important;
+        left: 10px !important;
+        font-size: 13px !important;
+        transition: 0.5s ease-in-out !important;
+        color: #604545 !important;
+        width: 8rem !important;
+    }
 
+    .padding-bet-inputs {
+        margin: 35px 0px !important;
+    }
 
-    <section style="display:flex;justify-content:flex-end;padding-right:25px;padding-top:25px;">
-        <div>
-            <a href="/close" style="text-decoration:none;cursor:pointer;color: black;font-size:20px;">X</a>
-        </div>
-        <div></div>
-    </section>
-     <section>
-        {{#if EmailError}}
-            <div style="">
-            <div style="
+    input:focus~.anim-effect,
+    input:valid~.anim-effect {
+        top: -30px !important;
+        left: -5px !important;
+        color: black !important;
+    }
 
-    padding-right: 11px;
-    text-align: center;
-    color: #fd0000;
-    border: 1px solid #d9d9d9;
-    margin: 20px 0px;
-    /* padding: 0px; */
-    padding-top: 15px;">
-                <p>{{EmailError}}</p>
-                {{!-- <p>hyyyyyyy</p> --}}
-            </div>
-        </div>
-        {{/if}}
-        
-    </section>
-    <section>
-        {{#if LoginError}}
-            <div style="">
-            <div style="
-
-    padding-right: 11px;
-    text-align: center;
-    color: #fd0000;
-    border: 1px solid #d9d9d9;
-    margin: 20px 0px;
-    /* padding: 0px; */
-    padding-top: 15px;">
-                <p>{{LoginError}}</p>
-            </div>
-        </div>
-        {{/if}}
-        
-    </section>
-    <section class="vh-100">
-        <div class="container-fluid">
-            <div class="row" style="display: flex;justify-content: center;">
-                    <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 pt-xl-0 mt-xl-n5 main-sub1-div-style" style="" id="main-div">
-                        <form action="/login" method="post" id="LoginForm" style="width: 20rem;">
-                            <div class="text-center logo-padding-bottom">
-                                <span class="h2 fw-bold mb-0 login-page-top-logo" >
-                                    <i class="fas fa-user-circle" style="font-size: 45px;padding: 10px;"></i>Login</span>
-                            </div>
-                            <div class="form-outline mb-4 divForAccessCssFlex" style="">
-                                <label class="form-label " for="form2Example18" style="position:unset!important;color: black!important;">Email address</label>
-                                <input type="email" class="form-control responsive-for-xm" name="emailaddr" id="email" required />
-                            </div>
-                            <div class="form-outline divForAccessCssFlex">
-                                <label class="form-label" for="form2Example28" style="position:unset!important;color: black!important;">Password</label>
-                                <input type="password" class="form-control responsive-for-xm" name="password" id="password" required />
-                            </div>
-                            <div class="row col-12 loginPage-InnerForm-CreateNewAccAndForGetPass" >
-                                <a class="text-muted" style="color: #727a83!important;font-size:14px" href="/signup">Create new account ?</a>
-                                <a class="text-muted loginPage-InnerForm-ForGetPass" href="#!">Forgot password?</a>
-                            </div>
-                            <div class="pt-1 mb-4 text-center loginPage-InnerForm-buttonDiv">
-                                <button class="btn btn-info btn-lg btn-block main-sub1-div-style-form-button" type="submit">Login</button>
-                            </div>
-                        </form>
-                    </div>
-                    <div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-<style>
-label{
-    color: rgb(207 29 29)!important;
-    position: absolute!important;
-    right: 0px!important;
-    font-size: 12px!important;
-    top: 43px!important;
-    padding-right: 7px!important;
-}
-.main-div-style{
-    justify-content: center;
-    align-content: center;
-}
-.main-sub1-div-style{
-    border: 1px solid #d9d9e1;
-    border-radius: 20px;
-    margin-top:2rem;
-    margin-bottom:2.5rem;
-    box-shadow: -5px 0px 70px 3px #d1cccc;
-}
-.main-sub1-div-style-form-button{
-    width: 45%!important;
-    height: 40px!important;
-    background-color: #2f893e!important; 
-    font-size: 18px!important; 
-    display: flex!important; 
-    border: none!important; 
-    justify-content: center!important; 
-    align-items: center !important;
-}
-.main-sub1-div-style-redirect-login{
-    display: flex;
-    justify-content: center;
-    padding-bottom: 1rem;
-}
-
-.divForAccessCssFlex {
-    position: relative!important;
-}
-.anim-effect {
-    position: absolute!important;
-    top: 10px!important;
-    left: 10px!important;
-    font-size: 13px!important;
-    transition: 0.5s ease-in-out!important;
-    color: #604545!important;
-    width: 8rem!important;
-}
-.padding-bet-inputs {
-    margin: 35px 0px!important;
-}
-
-input:focus~.anim-effect,
-input:valid~.anim-effect {
-    top: -30px!important;
-    left: -5px!important;
-    color: black!important;
-}
-.logo-padding-bottom{
-    padding-top: 2rem;
-}
-@media (max-width: 450px){
-    .logo-padding-bottom{
-        padding-bottom:1rem;
+    .logo-padding-bottom {
         padding-top: 2rem;
     }
-    #main-div{
-        width: 330px;
+
+    @media (max-width: 450px) {
+        .logo-padding-bottom {
+            padding-bottom: 1rem;
+            padding-top: 2rem;
+        }
+
+        #main-div {
+            width: 330px;
+        }
+
+        .responsive-for-xm {
+            width: 240px;
+        }
+
+        .main-sub1-div-style {
+            width: 330px;
+        }
     }
-    .responsive-for-xm{
-        width: 240px;
+
+    .main-sub1-div-style {
+        border: 1px solid #d9d9e1 !important;
+        border-radius: 15px !important;
+        margin-top: 2rem !important;
+        margin-bottom: 2.5rem !important;
+        box-shadow: -5px 0px 70px 3px #d1cccc !important;
     }
-    .main-sub1-div-style{
-        width: 330px;
+
+    .main-sub1-div-style-form-button {
+        width: 70% !important;
+        height: 37px !important;
+        background-color: #2f893e !important;
+        font-size: 18px !important;
+        display: flex !important;
+        border: none !important;
+        justify-content: center !important;
+        align-items: center !important;
+        margin-bottom: 2rem !important;
     }
-}
-.main-sub1-div-style{
-    border: 1px solid #d9d9e1!important;
-    border-radius: 15px!important;
-    margin-top:2rem!important;
-    margin-bottom:2.5rem!important;
-    box-shadow: -5px 0px 70px 3px #d1cccc!important;
-}
-.main-sub1-div-style-form-button{
-    width: 70%!important;
-    height: 37px!important;
-    background-color: #2f893e!important;
-    font-size: 18px!important;
-    display: flex!important;
-    border: none!important;
-    justify-content: center!important;
-    align-items: center!important;
-    margin-bottom: 2rem!important;
-}
-.loginPage-InnerForm-CreateNewAccAndForGetPass{
-    padding-top: 13px!important;
-    padding-bottom: 9px;flex-direction: column!important;
-}
-.loginPage-InnerForm-ForGetPass{
-    color: #727a83!important;
-    font-size: 12px!important;
-    padding-left: 5px!important;
-}
-.loginPage-InnerForm-buttonDiv{
-    display: flex!important;
-    justify-content: center!important;    
-    margin-bottom: 15px!important;
-    margin-top: 14px!important;
-}
-.login-page-top-logo{
-    color: #524747!important;    
-    font-size: 30px!important;
-    color: #1c1919!important;
-    display: flex!important;
-    justify-content: center!important;
-    align-items: center!important;
-}
-.scrollHide::-webkit-scrollbar{
-    display: none;
-    
-}
+
+    .loginPage-InnerForm-CreateNewAccAndForGetPass {
+        padding-top: 13px !important;
+        padding-bottom: 9px;
+        flex-direction: column !important;
+    }
+
+    .loginPage-InnerForm-ForGetPass {
+        color: #727a83 !important;
+        font-size: 12px !important;
+        padding-left: 5px !important;
+    }
+
+    .loginPage-InnerForm-buttonDiv {
+        display: flex !important;
+        justify-content: center !important;
+        margin-bottom: 15px !important;
+        margin-top: 14px !important;
+    }
+
+    .login-page-top-logo {
+        color: #524747 !important;
+        font-size: 30px !important;
+        color: #1c1919 !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    .scrollHide::-webkit-scrollbar {
+        display: none;
+
+    }
 </style>

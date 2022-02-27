@@ -1,4 +1,4 @@
-<section>
+<section style="margin-top: 5rem;">
     <div class="container">
         <form action="/admin/edit-category/{{category._id}}" method="POST" enctype="multipart/form-data">
             <div class="row w-50 mt-4">
@@ -9,14 +9,6 @@
                     <label>Name</label>
                     <input type="text" class="form-control" name="name" value="{{category.name}}" />
                 </div>
-                {{!-- <div class="col-12">
-                    <label>Category</label>
-                    <input type="text" class="form-control" name="category" value="{{product.category}}" />
-                </div>
-                <div class="col-12">
-                    <label>Price</label>
-                    <input type="text" class="form-control" name="price" value="{{product.price}}" />
-                </div> --}}
                 <div class="col-12">
                     <label>Description</label>
                     <input type="text" class="form-control" name="description" value="{{category.description}}" />

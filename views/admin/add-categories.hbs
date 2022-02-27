@@ -1,74 +1,32 @@
-<section>
+<section style="margin-top: 5rem;">
     <div class="container">
         <div>
-            <form  action='/admin/add-categories' method="post" enctype="multipart/form-data" onsubmit="s()">
-            <div class="row  mt-4 ">
-                <div class="col-12">
-                    <div class="text-center w-100" style="padding-top: 25px;">
-                        <h3 class="font-weight-bold">Add a new category</h3>
-                    </div>
-                    <div class="col-12" >
-                        <label>Name</label>
-                        <input type="text" class="form-control" name="name" />
-                    </div>
+            <form action='/admin/add-categories' method="post" enctype="multipart/form-data">
+                <div class="row  mt-4 ">
                     <div class="col-12">
-                        <label>Description</label>
-                        <input type="text" class="form-control" name="description" />
-                    </div>
-                    <div class="col-12">
-                        <label>Image</label>
-                        <img style="margin: 40px 20px;" src="" alt="" id="imgViewCat" width="65px" height="50px">
-                        <input type="file" class="form-control" id="image" name="image" onchange="viewImageCategory(event)" />
-                    </div>
-                    <div class="ml-3" style="margin-bottom: 3rem;">
-                        <button type="submit" class="btn btn-success mt-3">Submit</button>
+                        <div class="text-center w-100" style="padding-top: 25px;">
+                            <h3 class="font-weight-bold">Add a new category</h3>
+                        </div>
+                        <div class="col-12">
+                            <label>Name</label>
+                            <input type="text" class="form-control" name="name" />
+                        </div>
+                        <div class="col-12">
+                            <label>Description</label>
+                            <input type="text" class="form-control" name="description" />
+                        </div>
+                        <div class="col-12">
+                            <label>Image</label>
+                            <img style="margin: 40px 20px;" src="" alt="" id="imgViewCat" width="65px" height="50px">
+                            <input type="file" class="form-control" id="image" name="image"
+                                onchange="viewImageCategory(event)" />
+                        </div>
+                        <div class="ml-3" style="margin-bottom: 3rem;">
+                            <button type="submit" class="btn btn-success mt-3">Submit</button>
+                        </div>
                     </div>
                 </div>
-            
-
-            </div>
-        </form>
-        
+            </form>
         </div>
-        
     </div>
 </section>
-
-<script>
-   $('#AddCategory').submit((e) => {
- e.preventDefault()
- // alert('success')
-        // console.log(data)
-    function s(){
-        console.log('hyyy')
-  $.ajax({
-    url: '/admin/add-categories',
-    method: 'post',
-    data: $('#AddCategory').serialize(),
-    success: (response) => {
-
-      if (response.status) {
-        alert('Successfully added ')
-        //location.reload('/')
-      }
-    }
-  })
-})
-    }
-</script>
-
-
-    {{!-- <div class="col-12">
-                    <label>Category</label>
-                    <input type="text" class="form-control" name="category" />
-                </div> --}}
-                {{!-- <div class="col-12">
-                    <label>Price</label>
-                    <input type="text" class="form-control" name="price" />
-                </div> --}}
-            
-              
-                {{!-- <div class="col-12">
-                    <label>About</label>
-                    <textarea class="form-control" name="about" id="" cols="30" rows="10"></textarea>
-                </div> --}}
